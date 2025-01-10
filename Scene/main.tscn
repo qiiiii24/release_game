@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://ro4lxa4s1gnj"]
+
+[ext_resource type="Texture2D" uid="uid://f0db2e0mgxeh" path="res://Assets/Space Background (2).png" id="1_s07e7"]
+[ext_resource type="PackedScene" uid="uid://c2freeyys5ri8" path="res://Scene/player.tscn" id="2_vs64h"]
+[ext_resource type="PackedScene" uid="uid://dg2aytau76xo6" path="res://Scene/coin.tscn" id="3_0w5f8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1ycp"]
+size = Vector2(1080, 7)
+
+[node name="Main" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -2347.0
+offset_right = 1080.0
+offset_bottom = 653.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_s07e7")
+
+[node name="Player" parent="." instance=ExtResource("2_vs64h")]
+position = Vector2(525, 533)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="Coins" type="Node2D" parent="."]
+
+[node name="Coin" parent="Coins" instance=ExtResource("3_0w5f8")]
+position = Vector2(180, 325)
+
+[node name="Coin2" parent="Coins" instance=ExtResource("3_0w5f8")]
+position = Vector2(228, 325)
+
+[node name="Coin3" parent="Coins" instance=ExtResource("3_0w5f8")]
+position = Vector2(532, 325)
+
+[node name="Coin4" parent="Coins" instance=ExtResource("3_0w5f8")]
+position = Vector2(286, 325)
+
+[node name="Coin5" parent="Coins" instance=ExtResource("3_0w5f8")]
+position = Vector2(343, 325)
+
+[node name="Coin6" parent="Coins" instance=ExtResource("3_0w5f8")]
+position = Vector2(389, 325)
+
+[node name="Coin7" parent="Coins" instance=ExtResource("3_0w5f8")]
+position = Vector2(426, 325)
+
+[node name="Coin8" parent="Coins" instance=ExtResource("3_0w5f8")]
+position = Vector2(473, 325)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(540, 654.5)
+shape = SubResource("RectangleShape2D_h1ycp")
