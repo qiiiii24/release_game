@@ -1,0 +1,60 @@
+extends Node2D
+
+@onready var sling_shot_end: Sprite2D = $SlingShotEnd
+@onready var line_2d_2: Line2D = $Line2D2
+@onready var marker_2d: Marker2D = $Marker2D
+@onready var line_2d: Line2D = $Line2D
+@onready var area_2d: Area2D = $Area2D
+
+@export var max_strech_distance : float = 150
+
+var start_position : Vector2
+var drag_position : Vector2 = Vector2.ZERO
+var can_drag : bool = false :
+	set(value):
+		can_drag = value
+		line_2d.visible = can_drag
+		line_2d_2.visible = can_drag
+		sling_shot_end.visible = can_drag
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton :
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.is_released():
+				can_drag = false
+				drag_position = start_position
+
+func _ready() -> void:
+	area_2d.input_event.connect(_on_area_2d_input_event)
+	start_position = marker_2d.position
+
+func _process(delta: float) -> void:
+	if can_drag:
+		_update_sling_band()
+
+## 更新橡皮筋效果
+func _update_sling_band() -> void:
+	var local_mouse_position = get_local_mouse_position()
+	var strech_vector = local_mouse_position - start_position
+	
+	# 限制拉伸长度
+	#if strech_vector.y > 150:
+		#strech_vector.y = 150
+	strech_vector = _clamp_vector_to_length(strech_vector, max_strech_distance)
+	
+	drag_position = strech_vector + start_position
+	# 给 line2d赋值
+	line_2d.set_point_position(1,drag_position)
+	line_2d_2.set_point_position(1,drag_position)
+	sling_shot_end.position = drag_position
+
+## 限制拉伸长度
+func _clamp_vector_to_length(v: Vector2, max_length: float) -> Vector2:
+	return v.normalized() * max_length if v.length() > max_length else v
+
+## 鼠标进入area2d
+func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if event is InputEventMouseButton :
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.is_pressed():
+				can_drag = true

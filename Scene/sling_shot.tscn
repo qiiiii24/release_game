@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://dupw6g1rmpnny"]
+
+[ext_resource type="Script" path="res://Scene/sling_shot.gd" id="1_boagb"]
+[ext_resource type="Texture2D" uid="uid://c5ai2kqueu8kj" path="res://Assets/slingshot.png" id="1_h6nap"]
+[ext_resource type="Texture2D" uid="uid://c5p17ei7xhi13" path="res://Assets/slingshot_right.png" id="2_4hx8g"]
+[ext_resource type="Texture2D" uid="uid://bkotef0stw23d" path="res://Assets/slingshot_left.png" id="3_s6l4p"]
+
+[sub_resource type="Curve" id="Curve_v2gtn"]
+min_value = 0.5
+max_value = 1.5
+_data = [Vector2(0, 1.5), 0.0, 0.0, 0, 0, Vector2(1, 0.5), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kb8tk"]
+radius = 42.0476
+
+[node name="SlingShot" type="Node2D"]
+position = Vector2(327, 157)
+script = ExtResource("1_boagb")
+
+[node name="SlingShotEnd" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-35, -8)
+texture = ExtResource("1_h6nap")
+
+[node name="Line2D2" type="Line2D" parent="."]
+visible = false
+points = PackedVector2Array(94, -18, -36, -7)
+width = 15.0
+width_curve = SubResource("Curve_v2gtn")
+default_color = Color(0.2, 0.0666667, 0, 1)
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(85, 52)
+texture = ExtResource("2_4hx8g")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D3"]
+position = Vector2(-28, -47)
+texture = ExtResource("3_s6l4p")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(74, -31)
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+points = PackedVector2Array(48, -21, -34, -8)
+width = 15.0
+width_curve = SubResource("Curve_v2gtn")
+default_color = Color(0.2, 0.0666667, 0, 1)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(73, 0)
+shape = SubResource("CircleShape2D_kb8tk")

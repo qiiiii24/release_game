@@ -1,9 +1,10 @@
 extends Node
 
-## 全局金币
+## 全局金币（局外成长与解释角色）
 var global_coins : int = 0
-## 游戏内金币
+## 游戏内金币（用于局内成长和购买一次性道具）
 var ingame_coins : int = 0
+## 游戏内分数（分数不足视为失败）
 
 ## 增加全局金币
 func add_global_coins(amount: int) -> void:
