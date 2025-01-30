@@ -40,19 +40,20 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("1_s07e7")
 
-[node name="Player" parent="." node_paths=PackedStringArray("sling_shot") instance=ExtResource("2_vs64h")]
+[node name="Player" parent="." node_paths=PackedStringArray("sling_shot", "move_camera") instance=ExtResource("2_vs64h")]
 position = Vector2(589, 570)
 scale = Vector2(6, 6)
 collision_layer = 3
 collision_mask = 3
 sling_shot = NodePath("../SlingShot")
+move_camera = NodePath("../Camera2D")
 
-[node name="MoveCamera" type="Camera2D" parent="Player"]
-unique_name_in_owner = true
-enabled = false
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(544, 326)
+scale = Vector2(6, 6)
 limit_left = 0
 limit_right = 1080
-limit_bottom = 650
+limit_bottom = 658
 
 [node name="Generators" parent="." instance=ExtResource("4_5s2md")]
 position = Vector2(0, 539)
@@ -87,4 +88,5 @@ shape = SubResource("RectangleShape2D_h1ycp")
 [node name="SlingShot" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_yidns")]
 position = Vector2(385, 555)
 scale = Vector2(2, 2)
+initial_velocity_factor = 50.0
 player = NodePath("../Player")

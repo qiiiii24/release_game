@@ -9,7 +9,7 @@ signal drag_mode
 @onready var area_2d: Area2D = $Area2D
 
 @export var max_strech_distance : float = 150
-@export var initial_velocity_factor : float = 20
+@export var initial_velocity_factor : float = 30
 @export var player: Player
 
 #var player : PackedScene = preload("res://Scene/player.tscn")
@@ -24,13 +24,6 @@ var can_drag : bool = false :
 		line_2d.set_point_position(1,start_pos_l1)
 		line_2d_2.set_point_position(1,start_pos_l2)
 		sling_shot_end.position = start_pos
-		if can_drag:
-			print("进入drag模式")
-		else:
-			print("退出drag模式")
-		#line_2d.visible = can_drag
-		#line_2d_2.visible = can_drag
-		#sling_shot_end.visible = can_drag
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton :
