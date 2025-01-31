@@ -8,7 +8,8 @@ signal drag_mode
 @onready var line_2d: Line2D = $Line2D
 @onready var area_2d: Area2D = $Area2D
 
-@export var max_strech_distance : float = 150
+## 拉伸长度
+@export var max_strech_distance : float = 120
 @export var initial_velocity_factor : float = 30
 @export var player: Player
 

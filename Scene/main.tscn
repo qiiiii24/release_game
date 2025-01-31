@@ -15,7 +15,7 @@ shader_parameter/scroll_speed = 0.0
 size = Vector2(12, 4177.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h1ycp"]
-size = Vector2(1080, 7)
+size = Vector2(1080, 384)
 
 [node name="Main" type="Node2D"]
 
@@ -49,11 +49,11 @@ sling_shot = NodePath("../SlingShot")
 move_camera = NodePath("../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(544, 326)
+position = Vector2(549, 328)
 scale = Vector2(6, 6)
 limit_left = 0
 limit_right = 1080
-limit_bottom = 658
+limit_bottom = 648
 
 [node name="Generators" parent="." instance=ExtResource("4_5s2md")]
 position = Vector2(0, 539)
@@ -82,11 +82,11 @@ shape = SubResource("RectangleShape2D_yp7ko")
 [node name="RigidBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(540, 654.5)
+position = Vector2(540, 843)
 shape = SubResource("RectangleShape2D_h1ycp")
 
 [node name="SlingShot" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_yidns")]
-position = Vector2(385, 555)
+position = Vector2(385, 478)
 scale = Vector2(2, 2)
 initial_velocity_factor = 50.0
 player = NodePath("../Player")

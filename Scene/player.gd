@@ -50,11 +50,10 @@ func _physics_process(delta: float) -> void:
 ## 相机移动（发射后跟着移动）y方向速度等于0时停止移动，
 func camera_move() -> void:
 	if camera_can_move:
-		move_camera.position = position
+		move_camera.position.y = position.y
 	
 	if velocity.y > 0:
 		camera_can_move = false
-
 
 ## 发射
 func launch(speed: Vector2) -> void:
