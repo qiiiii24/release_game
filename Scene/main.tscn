@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ro4lxa4s1gnj"]
+[gd_scene load_steps=11 format=3 uid="uid://ro4lxa4s1gnj"]
 
 [ext_resource type="Texture2D" uid="uid://f0db2e0mgxeh" path="res://Assets/Space Background (2).png" id="1_s07e7"]
 [ext_resource type="Shader" path="res://shader/scroll.gdshader" id="1_w5mfm"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://da2etvm85mka2" path="res://Scene/generators.tscn" id="4_5s2md"]
 [ext_resource type="Script" path="res://Scene/wall.gd" id="5_4hx0k"]
 [ext_resource type="PackedScene" uid="uid://dupw6g1rmpnny" path="res://Scene/sling_shot.tscn" id="6_yidns"]
+[ext_resource type="PackedScene" uid="uid://d1vctperwnwfy" path="res://Scene/spring.tscn" id="7_lyq12"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fibsh"]
 shader = ExtResource("1_w5mfm")
@@ -79,14 +80,17 @@ collision_mask = 2
 position = Vector2(0.5, -849.5)
 shape = SubResource("RectangleShape2D_yp7ko")
 
-[node name="RigidBody2D" type="StaticBody2D" parent="."]
+[node name="Floor" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(540, 843)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(540, 837)
 shape = SubResource("RectangleShape2D_h1ycp")
 
 [node name="SlingShot" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_yidns")]
 position = Vector2(385, 478)
 scale = Vector2(2, 2)
 initial_velocity_factor = 50.0
+player = NodePath("../Player")
+
+[node name="Spring" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_lyq12")]
 player = NodePath("../Player")

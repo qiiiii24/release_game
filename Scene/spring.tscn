@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1vctperwnwfy"]
+
+[ext_resource type="Script" path="res://Scene/spring.gd" id="1_2oo58"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_efuo0"]
+
+[node name="Spring" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_2oo58")
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+points = PackedVector2Array(0, 0, 0, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_efuo0")

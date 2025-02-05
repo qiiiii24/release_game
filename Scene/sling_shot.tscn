@@ -35,7 +35,7 @@ position = Vector2(-28, -47)
 texture = ExtResource("3_s6l4p")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(74, -31)
+position = Vector2(78, -139)
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(-30, -104, 76, -76)
