@@ -13,6 +13,7 @@ const BOUNCE_SPEED := 0.8
 var drag : bool = false
 var camera_can_move : bool = false
 var can_draw_line : bool = false
+var launching : bool = false
 
 func _ready() -> void:
 	area_2d.input_event.connect(_on_area_2d_input_event)
@@ -21,7 +22,7 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton :
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.is_released():
+			if event.is_released(): ## 释放后不跟着鼠标走
 				drag = false
 
 ##测试用
@@ -34,9 +35,10 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	
 	var collisionInfo = move_and_collide(velocity * delta)
-	## 没有使用y坐标反弹，考虑是否要修改
+	## 没有使用y坐标反弹
 	if collisionInfo:
-		velocity.x = velocity.bounce(collisionInfo.get_normal()).x
+		velocity.x = velocity.bounce(collisionInfo.get_normal()).x 
+		
 		velocity *= BOUNCE_SPEED
 	
 	if not is_on_floor():
@@ -55,14 +57,18 @@ func camera_move() -> void:
 	
 	if velocity.y > 0:
 		camera_can_move = false
+		if launching:
+			can_draw_line = true
 		
-	
+
 ## 发射
 func launch(speed: Vector2) -> void:
 	camera_can_move = true
 	velocity += speed
-	can_draw_line = true
+	launching = true
+	
 
+## 点击玩家就会跟着鼠标走
 func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:

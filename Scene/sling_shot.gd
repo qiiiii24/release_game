@@ -14,6 +14,9 @@ signal drag_mode
 @export var player: Player
 
 #var player : PackedScene = preload("res://Scene/player.tscn")
+## 玩家已经进入发射区域就为true
+var player_enter: bool = false 
+
 var start_position : Vector2
 var drag_position : Vector2 = Vector2.ZERO
 var start_pos_l1 : Vector2
@@ -37,7 +40,7 @@ func _input(event: InputEvent) -> void:
 				
 
 func _ready() -> void:
-	#area_2d.input_event.connect(_on_area_2d_input_event)
+	area_2d.input_event.connect(_on_area_2d_input_event)
 	area_2d.body_entered.connect(_on_area_2d_body_entered, CONNECT_ONE_SHOT)
 	start_position = marker_2d.position
 	start_pos_l1 = line_2d.get_point_position(1)
@@ -45,17 +48,18 @@ func _ready() -> void:
 	start_pos = sling_shot_end.position
 
 func _process(delta: float) -> void:
+	if player_enter:
+		player.position = to_global(marker_2d.position)
 	if can_drag:
 		_update_sling_band()
-		player.global_position = to_global(drag_position)
+		player.global_position = to_global(drag_position) + Vector2(0, -35)
 
 ## 更新橡皮筋效果
 func _update_sling_band() -> void:
+
 	var local_mouse_position = get_local_mouse_position()
 	var strech_vector = local_mouse_position - start_position
-	# 限制拉伸长度
-	#if strech_vector.y > 150:
-		#strech_vector.y = 150
+	
 	strech_vector = _clamp_vector_to_length(strech_vector, max_strech_distance)
 	
 	drag_position = strech_vector + start_position
@@ -74,14 +78,14 @@ func _clamp_vector_to_length(v: Vector2, max_length: float) -> Vector2:
 	return v.normalized() * max_length if v.length() > max_length else v
 
 ## 鼠标进入area2d
-#func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	#if event is InputEventMouseButton :
-		#if event.button_index == MOUSE_BUTTON_LEFT:
-			#if event.is_pressed():
-				#can_drag = true
+func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if event is InputEventMouseButton :
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.is_pressed() and player_enter:
+				can_drag = true
+				player_enter = false
 
 ## 将物体拖入范围
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
-		can_drag = true
-		
+		player_enter = true

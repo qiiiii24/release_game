@@ -12,14 +12,14 @@ _data = [Vector2(0, 1.5), 0.0, 0.0, 0, 0, Vector2(1, 0.5), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kb8tk"]
-radius = 42.0476
+radius = 25.0
 
 [node name="SlingShot" type="Node2D"]
 position = Vector2(327, 157)
 script = ExtResource("1_boagb")
 
 [node name="Line2D2" type="Line2D" parent="."]
-points = PackedVector2Array(179, -97, 81, -77)
+points = PackedVector2Array(153, -140, 81, -77)
 width = 15.0
 width_curve = SubResource("Curve_v2gtn")
 default_color = Color(0.211392, 0.545794, 0.895315, 1)
@@ -35,10 +35,10 @@ position = Vector2(-28, -47)
 texture = ExtResource("3_s6l4p")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(78, -139)
+position = Vector2(78, -97)
 
 [node name="Line2D" type="Line2D" parent="."]
-points = PackedVector2Array(-30, -104, 76, -76)
+points = PackedVector2Array(4, -143, 76, -76)
 width = 15.0
 width_curve = SubResource("Curve_v2gtn")
 default_color = Color(0.211765, 0.545098, 0.894118, 1)
@@ -50,7 +50,8 @@ rotation = -1.24213
 texture = ExtResource("1_h6nap")
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2(77, -77)
+position = Vector2(77, -85)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_kb8tk")
