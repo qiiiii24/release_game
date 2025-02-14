@@ -4,11 +4,21 @@ class_name Player
 const BOUNCE_SPEED := 0.8
 
 @onready var area_2d: Area2D = $Area2D
+@onready var area_shape: CollisionShape2D = $Area2D/AreaShape
+
 
 ## 初速度
 @export var initial_velocity := -400
 @export var sling_shot: Node2D
 @export var move_camera: Camera2D
+
+## 拾取范围（可以成长）
+var pick_range : float = 9 :
+	set(value):
+		print("set成功")
+		pick_range = value
+		area_shape.shape.radius = pick_range
+		
 
 var drag : bool = false
 var camera_can_move : bool = false
@@ -17,6 +27,7 @@ var launching : bool = false
 
 func _ready() -> void:
 	area_2d.input_event.connect(_on_area_2d_input_event)
+	area_2d.body_entered.connect(_on_area_2d_body_entered)
 	sling_shot.drag_mode.connect(launch)
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -48,7 +59,8 @@ func _physics_process(delta: float) -> void:
 		position = to_global(get_local_mouse_position())
 	
 	camera_move()
-	#move_and_slide()
+	
+	
 	
 ## 相机移动（发射后跟着移动）y方向速度等于0时停止移动，
 func camera_move() -> void:
@@ -74,3 +86,14 @@ func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.is_pressed():
 				drag = true
+
+## 给予玩家加速度（可以成长）
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body is Spring:
+		camera_can_move = true
+		can_draw_line = false
+		print("body is spring")
+		var lanching_speed = Vector2(0, -2500)
+		velocity += lanching_speed
+		
+		#launch(lanching_speed)

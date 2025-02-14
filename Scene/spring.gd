@@ -1,4 +1,9 @@
 extends Node2D
+class_name Spring
+
+## 划线所需要的能量（可以成长）
+
+## 总能量（可以成长）
 
 @onready var line_2d: Line2D = $Line2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
@@ -33,4 +38,3 @@ func draw_spring(pos: Vector2) -> void:
 			line_2d.set_point_position(1, pos)
 			line_2d.visible = true
 			collision_shape_2d.disabled = false
-	

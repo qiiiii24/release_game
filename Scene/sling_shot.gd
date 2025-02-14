@@ -7,9 +7,12 @@ signal drag_mode
 @onready var marker_2d: Marker2D = $Marker2D
 @onready var line_2d: Line2D = $Line2D
 @onready var area_2d: Area2D = $Area2D
+@onready var point_1: Node2D = $SlingShotEnd/point1
+@onready var point_2: Node2D = $SlingShotEnd/point2
 
 ## 拉伸长度
 @export var max_strech_distance : float = 120
+## 影响发射速度（可以成长）
 @export var initial_velocity_factor : float = 30
 @export var player: Player
 
@@ -25,8 +28,8 @@ var start_pos : Vector2
 var can_drag : bool = false :
 	set(value):
 		can_drag = value
-		line_2d.set_point_position(1,start_pos_l1)
-		line_2d_2.set_point_position(1,start_pos_l2)
+		line_2d.set_point_position(1,to_local(point_1.global_position))
+		line_2d_2.set_point_position(1,to_local(point_2.global_position))
 		sling_shot_end.position = start_pos
 
 func _input(event: InputEvent) -> void:
@@ -49,7 +52,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if player_enter:
-		player.position = to_global(marker_2d.position)
+		player.position = to_global(marker_2d.position) + Vector2(0, -50)
+		
 	if can_drag:
 		_update_sling_band()
 		player.global_position = to_global(drag_position) + Vector2(0, -35)
@@ -63,10 +67,12 @@ func _update_sling_band() -> void:
 	strech_vector = _clamp_vector_to_length(strech_vector, max_strech_distance)
 	
 	drag_position = strech_vector + start_position
-	# 给 line2d赋值
-	line_2d.set_point_position(1,drag_position)
-	line_2d_2.set_point_position(1,drag_position)
 	sling_shot_end.position = drag_position
+	# 给 line2d赋值
+	
+	line_2d.set_point_position(1,to_local(point_1.global_position))
+	line_2d_2.set_point_position(1,to_local(point_2.global_position))
+	
 
 ## 获取发射速度
 func _get_launch_velicity() -> Vector2:
