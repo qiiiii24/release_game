@@ -51,6 +51,7 @@ func upgrade_ability(ability: ABILITY) -> void:
 	else:
 		print("金币不足")
 
+## 改变能力的数值
 func change_ability_amount(ability: ABILITY) -> void:
 	if ability == ABILITY.PICK_RANGE:
 		player.pick_range += abilities[ABILITY.PICK_RANGE] * 0.5
