@@ -12,8 +12,7 @@ signal drag_mode
 
 ## 拉伸长度
 @export var max_strech_distance : float = 120
-## 影响发射速度（可以成长）
-@export var initial_velocity_factor : float = 30
+
 @export var player: Player
 
 #var player : PackedScene = preload("res://Scene/player.tscn")
@@ -77,7 +76,7 @@ func _update_sling_band() -> void:
 ## 获取发射速度
 func _get_launch_velicity() -> Vector2:
 	var strech_vector = start_position - drag_position
-	return strech_vector * initial_velocity_factor
+	return strech_vector * InventorySystem.initial_velocity_factor
 
 ## 限制拉伸长度
 func _clamp_vector_to_length(v: Vector2, max_length: float) -> Vector2:

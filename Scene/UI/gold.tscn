@@ -18,3 +18,9 @@ stretch_mode = 5
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
 text = "999"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+text = "+50"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

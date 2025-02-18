@@ -1,12 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://bv6w7gvtyti2v"]
+[gd_scene load_steps=3 format=3 uid="uid://bv6w7gvtyti2v"]
 
 [ext_resource type="Script" path="res://Scene/UI/shop.gd" id="1_aafap"]
+[ext_resource type="PackedScene" uid="uid://cvrjsbvg2um0h" path="res://Scene/UI/shop_item.tscn" id="2_vr8e3"]
 
-[node name="Shop" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Shop" type="PanelContainer"]
+offset_right = 170.0
+offset_bottom = 72.0
 script = ExtResource("1_aafap")
+
+[node name="Grid" type="GridContainer" parent="."]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+columns = 2
+
+[node name="ShopItem" parent="Grid" instance=ExtResource("2_vr8e3")]
+layout_mode = 2
+
+[node name="ShopItem2" parent="Grid" instance=ExtResource("2_vr8e3")]
+layout_mode = 2
+ability = 1
+
+[node name="ShopItem3" parent="Grid" instance=ExtResource("2_vr8e3")]
+layout_mode = 2
+ability = 2
+
+[node name="ShopItem4" parent="Grid" instance=ExtResource("2_vr8e3")]
+layout_mode = 2
+ability = 3
+
+[node name="ShopItem5" parent="Grid" instance=ExtResource("2_vr8e3")]
+layout_mode = 2
+ability = 4

@@ -84,7 +84,6 @@ shape = SubResource("RectangleShape2D_h1ycp")
 [node name="SlingShot" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_yidns")]
 position = Vector2(586, 478)
 scale = Vector2(2, 2)
-initial_velocity_factor = 50.0
 player = NodePath("../Player")
 
 [node name="Player" parent="." node_paths=PackedStringArray("sling_shot", "move_camera") instance=ExtResource("2_vs64h")]
@@ -101,12 +100,14 @@ player = NodePath("../Player")
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Gold" parent="UI" instance=ExtResource("8_sy3md")]
-offset_left = 33.0
-offset_top = 19.0
-offset_right = 85.0
-offset_bottom = 42.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -106.0
+offset_top = 20.0
+offset_right = -54.0
+offset_bottom = 43.0
+grow_horizontal = 0
 scale = Vector2(1.5, 1.5)
 
-[node name="Shop" parent="UI" node_paths=PackedStringArray("player") instance=ExtResource("9_rdc63")]
-visible = false
-player = NodePath("../../Player")
+[node name="Shop" parent="UI" instance=ExtResource("9_rdc63")]

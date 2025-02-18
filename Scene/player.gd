@@ -12,13 +12,7 @@ const BOUNCE_SPEED := 0.8
 @export var sling_shot: Node2D
 @export var move_camera: Camera2D
 
-## 拾取范围（可以成长）
-var pick_range : float = 9 :
-	set(value):
-		print("set成功")
-		pick_range = value
-		area_shape.shape.radius = pick_range
-		
+
 
 var drag : bool = false
 var camera_can_move : bool = false
@@ -29,6 +23,11 @@ func _ready() -> void:
 	area_2d.input_event.connect(_on_area_2d_input_event)
 	area_2d.body_entered.connect(_on_area_2d_body_entered)
 	sling_shot.drag_mode.connect(launch)
+	InventorySystem.State_change.connect(change_state)
+	
+
+	
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton :
@@ -43,8 +42,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			#velocity.y += initial_velocity
 			#velocity.x += 200
 
+
+func change_state(type) -> void:
+	area_shape.shape.radius = InventorySystem.pick_range
+
+
 func _physics_process(delta: float) -> void:
-	
 	var collisionInfo = move_and_collide(velocity * delta)
 	## 没有使用y坐标反弹
 	if collisionInfo:
