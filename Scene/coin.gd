@@ -19,4 +19,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 
 func _random_position() -> void:
-	position.x = randi_range(0,1080)
+	position.x = randi_range(0,648)

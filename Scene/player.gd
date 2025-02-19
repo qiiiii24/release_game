@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Player
 
+signal start
+
 const BOUNCE_SPEED := 0.8
 
 @onready var area_2d: Area2D = $Area2D
@@ -81,6 +83,7 @@ func launch(speed: Vector2) -> void:
 	camera_can_move = true
 	velocity += speed
 	launching = true
+	start.emit()
 	
 
 ## 点击玩家就会跟着鼠标走

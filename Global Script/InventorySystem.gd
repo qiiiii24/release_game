@@ -44,11 +44,11 @@ var ability_upgrade_cost = {
 # 拾取范围
 var pick_range : float = 9
 # 速度
-var initial_velocity_factor : float = 30
+var initial_velocity_factor : float = 40
 # 踏板所消耗能量
-var spring_consume_energy : int 
+var spring_consume_energy : float 
 # 踏板总能量
-var spring_total_energy
+var spring_total_energy : float
 # 踏板给玩家的速度
 var spring_velocity_factor : float = 15
 # 生成物概率(以什么为标准还没有确定)
@@ -68,7 +68,7 @@ func add_global_coins(amount: int) -> void:
 ## 增加游戏内金币
 func add_ingame_coins(amount: int) -> void:
 	ingame_coins += amount
-	ingame_coins_change.emit()
+	State_change.emit(null)
 	
 # 升级能力
 func upgrade_ability(ability: ABILITY) -> void:
@@ -81,11 +81,11 @@ func upgrade_ability(ability: ABILITY) -> void:
 	# 检查货币是否足够
 	if InventorySystem.ingame_coins >= cost:
 		# 扣除货币
-		InventorySystem.ingame_coins -= cost
+		InventorySystem.add_ingame_coins(-cost)
 		# 升级能力
 		abilities[ability] = current_level + 1
 		
-		InventorySystem.ingame_coins_change.emit()
+		#InventorySystem.ingame_coins_change.emit()
 		
 		change_ability_amount(ability)
 	else:
