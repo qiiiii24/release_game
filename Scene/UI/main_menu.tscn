@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6jl8hypa0j1m"]
+
+[ext_resource type="Script" path="res://Scene/UI/main_menu.gd" id="1_6jtcl"]
+[ext_resource type="Theme" uid="uid://bshvstrorndl5" path="res://Theme/Main_menu.tres" id="1_ph18s"]
+[ext_resource type="Texture2D" uid="uid://b618rntgnr62t" path="res://Assets/a0560bd2-2138-4984-9204-11800e367c41.jpg" id="1_x4ndo"]
+
+[node name="Main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ph18s")
+script = ExtResource("1_6jtcl")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -277.0
+offset_top = -121.0
+offset_right = 747.0
+offset_bottom = 903.0
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("1_x4ndo")
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -205.0
+offset_top = 325.0
+offset_right = 242.0
+offset_bottom = 408.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 60
+text = "To the universe"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 197.0
+offset_top = 445.0
+offset_right = 476.0
+offset_bottom = 539.0
+focus_mode = 0
+text = "Play"

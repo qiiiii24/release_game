@@ -1,0 +1,18 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://ibwo54alljrk"]
+
+[ext_resource type="Texture2D" uid="uid://mnwbui6crant" path="res://Assets/Sprite sheet for Basic Pack.png" id="1_fo0a4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5map"]
+atlas = ExtResource("1_fo0a4")
+region = Rect2(275, 212, 90, 25)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hqdt3"]
+texture = SubResource("AtlasTexture_c5map")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[resource]
+Panel/styles/hover = SubResource("StyleBoxTexture_hqdt3")
+Panel/styles/panel = SubResource("StyleBoxTexture_hqdt3")

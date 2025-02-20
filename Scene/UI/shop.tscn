@@ -1,34 +1,73 @@
-[gd_scene load_steps=3 format=3 uid="uid://bv6w7gvtyti2v"]
+[gd_scene load_steps=5 format=3 uid="uid://bv6w7gvtyti2v"]
 
 [ext_resource type="Script" path="res://Scene/UI/shop.gd" id="1_aafap"]
+[ext_resource type="Theme" uid="uid://ibwo54alljrk" path="res://Theme/shop_background.tres" id="2_te771"]
 [ext_resource type="PackedScene" uid="uid://cvrjsbvg2um0h" path="res://Scene/UI/shop_item.tscn" id="2_vr8e3"]
+[ext_resource type="Theme" uid="uid://c0yqq8w40u33h" path="res://Theme/quit_button.tres" id="3_dxkyw"]
 
-[node name="Shop" type="GridContainer"]
-offset_right = 186.0
-offset_bottom = 272.0
-scale = Vector2(2, 2)
-columns = 2
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_aafap")
 
-[node name="ShopItem" parent="." instance=ExtResource("2_vr8e3")]
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_te771")
+
+[node name="Grid" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.0
+offset_top = -366.0
+offset_right = 1.0
+offset_bottom = -137.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+columns = 2
+
+[node name="ShopItem" parent="Grid" instance=ExtResource("2_vr8e3")]
 layout_mode = 2
 
-[node name="ShopItem2" parent="." instance=ExtResource("2_vr8e3")]
+[node name="ShopItem2" parent="Grid" instance=ExtResource("2_vr8e3")]
 layout_mode = 2
 ability = 1
 item_name = "Velocity"
 
-[node name="ShopItem3" parent="." instance=ExtResource("2_vr8e3")]
+[node name="ShopItem3" parent="Grid" instance=ExtResource("2_vr8e3")]
 layout_mode = 2
 ability = 2
-item_name = "Health"
+item_name = "TOTOL_ENERGY"
 
-[node name="ShopItem4" parent="." instance=ExtResource("2_vr8e3")]
+[node name="ShopItem4" parent="Grid" instance=ExtResource("2_vr8e3")]
 layout_mode = 2
 ability = 3
 item_name = "Attack"
 
-[node name="ShopItem5" parent="." instance=ExtResource("2_vr8e3")]
+[node name="ShopItem5" parent="Grid" instance=ExtResource("2_vr8e3")]
 layout_mode = 2
 ability = 4
 item_name = "Def"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 28.0
+offset_right = 100.0
+offset_bottom = 103.0
+theme = ExtResource("3_dxkyw")
+
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

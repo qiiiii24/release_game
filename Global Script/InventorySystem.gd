@@ -14,7 +14,7 @@ var ingame_coins : int = 500
 enum ABILITY {
 	PICK_RANGE,  # 拾取范围
 	VELOCITY_FACTOR,  # 速度
-	HEALTH,     # 踏板所消耗能量
+	TOTOL_ENERGY,     # 踏板所消耗能量
 	ATTACK,     # 踏板总能量
 	DEFENSE     # 生成物概率
 	# 踏板给玩家的速度
@@ -26,7 +26,7 @@ enum ABILITY {
 var abilities = {
 	ABILITY.PICK_RANGE: 0,
 	ABILITY.VELOCITY_FACTOR: 0,
-	ABILITY.HEALTH: 0,
+	ABILITY.TOTOL_ENERGY: 0,
 	ABILITY.ATTACK: 0,
 	ABILITY.DEFENSE: 0
 }
@@ -35,7 +35,7 @@ var abilities = {
 var ability_upgrade_cost = {
 	ABILITY.PICK_RANGE: func(level): return clamp(10 * (level + 1), 10, 50),  # PICK_RANGE 花费公式
 	ABILITY.VELOCITY_FACTOR: func(level): return 15 * (level + 1), # VELOCITY_FACTOR 花费公式
-	ABILITY.HEALTH: func(level): return 20 * (level + 1),     # HEALTH 花费公式
+	ABILITY.TOTOL_ENERGY: func(level): return 20 * (level + 1),     # TOTOL_ENERGY 花费公式
 	ABILITY.ATTACK: func(level): return 25 * (level + 1),     # ATTACK 花费公式
 	ABILITY.DEFENSE: func(level): return 30 * (level + 1)     # DEFENSE 花费公式
 }
@@ -48,7 +48,7 @@ var initial_velocity_factor : float = 40
 # 踏板所消耗能量
 var spring_consume_energy : float 
 # 踏板总能量
-var spring_total_energy : float
+var spring_total_energy : float = 60
 # 踏板给玩家的速度
 var spring_velocity_factor : float = 15
 # 生成物概率(以什么为标准还没有确定)
@@ -98,6 +98,8 @@ func change_ability_amount(ability: ABILITY) -> void:
 		InventorySystem.pick_range += abilities[ability] * 0.5
 	elif ability == ABILITY.VELOCITY_FACTOR:
 		InventorySystem.initial_velocity_factor += abilities[ABILITY.VELOCITY_FACTOR] * 1
+	elif ability == ABILITY.TOTOL_ENERGY:
+		InventorySystem.spring_total_energy += 20
 	
 	InventorySystem.State_change.emit(abilities[ability])
 

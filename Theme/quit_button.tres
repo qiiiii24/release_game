@@ -1,0 +1,25 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://c0yqq8w40u33h"]
+
+[ext_resource type="Texture2D" uid="uid://mnwbui6crant" path="res://Assets/Sprite sheet for Basic Pack.png" id="1_nckmk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1svt6"]
+atlas = ExtResource("1_nckmk")
+region = Rect2(869, 134, 22, 22)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_efga3"]
+texture = SubResource("AtlasTexture_1svt6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6xj32"]
+texture = SubResource("AtlasTexture_1svt6")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_heycv"]
+atlas = ExtResource("1_nckmk")
+region = Rect2(869, 134, 22, 22)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i7xyo"]
+texture = SubResource("AtlasTexture_heycv")
+
+[resource]
+Button/styles/hover = SubResource("StyleBoxTexture_efga3")
+Button/styles/normal = SubResource("StyleBoxTexture_6xj32")
+Button/styles/pressed = SubResource("StyleBoxTexture_i7xyo")
