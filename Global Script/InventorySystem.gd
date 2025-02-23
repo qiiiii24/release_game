@@ -46,11 +46,11 @@ var pick_range : float = 9
 # 速度
 var initial_velocity_factor : float = 40
 # 踏板所消耗能量
-var spring_consume_energy : float 
+var spring_consume_energy : int 
 # 踏板总能量
-var spring_total_energy : float = 60
+var spring_total_energy : int = 60
 # 踏板给玩家的速度
-var spring_velocity_factor : float = 15
+var spring_velocity_factor : float = 10
 # 生成物概率(以什么为标准还没有确定)
 var generate_rate
 # 云朵(减少速度的物体)减少的速度

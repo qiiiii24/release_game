@@ -10,7 +10,7 @@ func _ready() -> void:
 	InventorySystem.State_change.connect(change_ui)
 	add_to_group("energy")
 
-func change_ui(type) -> void:
+func change_ui(_type) -> void:
 	pass
 	
 	## 满能量

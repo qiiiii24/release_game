@@ -1,26 +1,31 @@
 [gd_scene load_steps=3 format=3 uid="uid://6ed4f2rc5b0t"]
 
 [ext_resource type="Script" path="res://Scene/UI/gold.gd" id="1_nig1f"]
-[ext_resource type="Texture2D" uid="uid://b3jk5akrvd635" path="res://Assets/gold.png" id="1_p1j8h"]
+[ext_resource type="Texture2D" uid="uid://csyk1tyuscq7q" path="res://Assets/Pirate Treasure/Silver Coin/01.png" id="2_nyscy"]
 
 [node name="Gold" type="HBoxContainer"]
-offset_right = 52.0
-offset_bottom = 23.0
+offset_right = 92.0
+offset_bottom = 31.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("1_nig1f")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
-texture = ExtResource("1_p1j8h")
+texture = ExtResource("2_nyscy")
+expand_mode = 1
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
+theme_override_font_sizes/font_size = 12
 text = "999"
 
 [node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
+theme_override_font_sizes/font_size = 12
 text = "+50"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

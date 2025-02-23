@@ -1,6 +1,7 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://bshvstrorndl5"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://bshvstrorndl5"]
 
 [ext_resource type="Texture2D" uid="uid://mnwbui6crant" path="res://Assets/Sprite sheet for Basic Pack.png" id="1_il8mq"]
+[ext_resource type="Texture2D" uid="uid://cpxsk6b5me68m" path="res://Assets/Background/Additional Sky.png" id="2_a0l2c"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0ld4q"]
 
@@ -29,10 +30,18 @@ texture_margin_top = 4.0
 texture_margin_right = 4.0
 texture_margin_bottom = 4.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lmj64"]
+texture = ExtResource("2_a0l2c")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
 [resource]
 Button/constants/outline_size = 4
-Button/font_sizes/font_size = 64
+Button/font_sizes/font_size = 32
 Button/styles/focus = SubResource("StyleBoxEmpty_0ld4q")
 Button/styles/hover = SubResource("StyleBoxTexture_h6mfn")
 Button/styles/normal = SubResource("StyleBoxTexture_okb11")
 Button/styles/pressed = SubResource("StyleBoxTexture_1yffp")
+Panel/styles/panel = SubResource("StyleBoxTexture_lmj64")

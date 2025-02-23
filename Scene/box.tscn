@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cssjy3xxm3h1i"]
+
+[ext_resource type="Texture2D" uid="uid://dscp2dq4pckrq" path="res://Assets/Box/Idle/box1.png" id="1_3thpu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yo5h7"]
+size = Vector2(20, 17)
+
+[sub_resource type="Animation" id="Animation_3kq21"]
+resource_name = "explosion"
+length = 0.5
+step = 0.1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tkqab"]
+_data = {
+"explosion": SubResource("Animation_3kq21")
+}
+
+[node name="Box" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3thpu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_yo5h7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tkqab")
+}

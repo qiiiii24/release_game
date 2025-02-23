@@ -4,5 +4,5 @@ extends Node2D
 
 @onready var player: Player = $"../Player"
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	position.y = player.position.y + amount

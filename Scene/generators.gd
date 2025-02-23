@@ -11,7 +11,7 @@ var generator_position : float :
 
 var can_generate : bool = false
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	generator_position = player.position.y - 648
 	position.y = generator_position
 
@@ -24,8 +24,15 @@ func start_generate() -> void:
 	can_generate = true
 	
 
+#func _generate_coin(collection: Collection) -> void:
 func _generate_coin() -> void:
 	if not can_generate : return
-	var coin := COIN.instantiate()
+	
+	var coin = COIN.instantiate()
 	coin.position = position
 	get_parent().add_child(coin)
+
+
+	
+
+	

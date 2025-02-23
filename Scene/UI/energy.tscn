@@ -18,24 +18,22 @@ region = Rect2(594, 67, 12, 10)
 [node name="Energy" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 42.0
-offset_bottom = 22.0
 script = ExtResource("1_81uca")
 
 [node name="EnergyEmpty" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 20.0
+offset_bottom = 20.0
 texture = SubResource("AtlasTexture_86adf")
 
 [node name="EnergyHalf" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 20.0
+offset_bottom = 20.0
 texture = SubResource("AtlasTexture_rgsbx")
 
 [node name="EnergyUI" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 20.0
+offset_bottom = 20.0
 texture = SubResource("AtlasTexture_h5ebt")

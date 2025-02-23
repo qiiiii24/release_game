@@ -12,7 +12,7 @@ func _ready() -> void:
 	for i in range(amount):
 		add_energy(null)
 
-func add_energy(type) -> void:
+func add_energy(_type) -> void:
 	for child in get_children():
 		child.queue_free()
 	

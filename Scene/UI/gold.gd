@@ -9,7 +9,7 @@ func _ready() -> void:
 	change_gold(null)
 	InventorySystem.State_change.connect(change_gold)
 
-func change_gold(type) -> void:
+func change_gold(_type) -> void:
 	gold = InventorySystem.ingame_coins
 	label.text = str(gold)
 

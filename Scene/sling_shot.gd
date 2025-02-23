@@ -49,7 +49,7 @@ func _ready() -> void:
 	start_pos_l2 = line_2d_2.get_point_position(1)
 	start_pos = sling_shot_end.position
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if player_enter:
 		player.position = to_global(marker_2d.position) + Vector2(0, -50)
 		

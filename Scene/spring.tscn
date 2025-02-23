@@ -12,6 +12,7 @@ script = ExtResource("1_2oo58")
 [node name="Line2D" type="Line2D" parent="."]
 visible = false
 points = PackedVector2Array(0, 0, 0, 0)
+width = 6.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("SegmentShape2D_efuo0")

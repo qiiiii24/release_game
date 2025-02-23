@@ -1,9 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://ro4lxa4s1gnj"]
+[gd_scene load_steps=44 format=4 uid="uid://ro4lxa4s1gnj"]
 
 [ext_resource type="Script" path="res://Scene/main.gd" id="1_rs0w5"]
-[ext_resource type="Texture2D" uid="uid://f0db2e0mgxeh" path="res://Assets/Space Background (2).png" id="1_s07e7"]
-[ext_resource type="Shader" path="res://shader/scroll.gdshader" id="1_w5mfm"]
 [ext_resource type="PackedScene" uid="uid://c2freeyys5ri8" path="res://Scene/player.tscn" id="2_vs64h"]
+[ext_resource type="Texture2D" uid="uid://lda4urw2l0ni" path="res://Assets/Background/white.png" id="3_bvxf7"]
 [ext_resource type="PackedScene" uid="uid://da2etvm85mka2" path="res://Scene/generators.tscn" id="4_5s2md"]
 [ext_resource type="Script" path="res://Scene/wall.gd" id="5_4hx0k"]
 [ext_resource type="PackedScene" uid="uid://dupw6g1rmpnny" path="res://Scene/sling_shot.tscn" id="6_yidns"]
@@ -12,49 +11,264 @@
 [ext_resource type="PackedScene" uid="uid://bv6w7gvtyti2v" path="res://Scene/UI/shop.tscn" id="9_rdc63"]
 [ext_resource type="Script" path="res://Scene/UI/energy_bar.gd" id="10_5hhof"]
 [ext_resource type="PackedScene" uid="uid://cb3cfnhgl3arj" path="res://Scene/UI/energy.tscn" id="10_am8hj"]
+[ext_resource type="Texture2D" uid="uid://1ew0y8rjoobp" path="res://Assets/Background/Additional Water.png" id="12_sxayq"]
 [ext_resource type="Theme" uid="uid://cdfcavl4nuvbu" path="res://Theme/shop_theme.tres" id="12_xxuxf"]
+[ext_resource type="PackedScene" uid="uid://bawexkb6xe31w" path="res://Scene/UI/big_cloud.tscn" id="13_4yb88"]
+[ext_resource type="Texture2D" uid="uid://de0sdxur64i1c" path="res://Assets/Background/Water Reflect Medium 01.png" id="14_nw5u1"]
+[ext_resource type="Texture2D" uid="uid://cvgkc664xp6rj" path="res://Assets/Background/Water Reflect Medium 02.png" id="15_ak6vh"]
+[ext_resource type="Texture2D" uid="uid://bnpklus1nmyed" path="res://Assets/Background/Water Reflect Medium 03.png" id="16_iixc4"]
+[ext_resource type="Texture2D" uid="uid://da83iacgwn7to" path="res://Assets/Background/Water Reflect Medium 04.png" id="17_do7af"]
+[ext_resource type="Texture2D" uid="uid://wsxca4aa8fkf" path="res://Assets/Background/Water Reflect Big 01.png" id="18_c2sw3"]
+[ext_resource type="Texture2D" uid="uid://dyq8yg308j0w4" path="res://Assets/Background/Water Reflect Big 02.png" id="19_tixc2"]
+[ext_resource type="Texture2D" uid="uid://h5yagh6t8ck3" path="res://Assets/Background/Water Reflect Big 03.png" id="20_8efdd"]
+[ext_resource type="Texture2D" uid="uid://c3vg641nbq253" path="res://Assets/Background/Water Reflect Big 04.png" id="21_6b3eu"]
+[ext_resource type="Texture2D" uid="uid://c4juvllqesocu" path="res://Assets/Background/Water Reflect Small 01.png" id="22_qu1cm"]
+[ext_resource type="Texture2D" uid="uid://c6qvajpv6bqkp" path="res://Assets/Background/Water Reflect Small 02.png" id="23_qqb6r"]
+[ext_resource type="Texture2D" uid="uid://cemqga4b1w1ua" path="res://Assets/Background/Water Reflect Small 03.png" id="24_57gb5"]
+[ext_resource type="Texture2D" uid="uid://bm7gnw5japqke" path="res://Assets/Background/Water Reflect Small 04.png" id="25_eq32x"]
+[ext_resource type="Texture2D" uid="uid://bcvcnuej4ll3c" path="res://Assets/Terrain/Terrain (32x32).png" id="26_fn7ct"]
+[ext_resource type="PackedScene" uid="uid://cssjy3xxm3h1i" path="res://Scene/box.tscn" id="27_0ifs2"]
+[ext_resource type="Texture2D" uid="uid://blljl1854ysu" path="res://Assets/Candle/Candle/01.png" id="28_18nmw"]
+[ext_resource type="Texture2D" uid="uid://c4m3ossblopjs" path="res://Assets/Candle/Candle/02.png" id="29_t85q5"]
+[ext_resource type="Texture2D" uid="uid://cicdgyndeel0q" path="res://Assets/Candle/Candle/03.png" id="30_yv3w7"]
+[ext_resource type="Texture2D" uid="uid://c0qwrp1ftyvlv" path="res://Assets/Candle/Candle/04.png" id="31_jdiy8"]
+[ext_resource type="Texture2D" uid="uid://ddl5q4cbxyu00" path="res://Assets/Candle/Candle/05.png" id="32_btua2"]
+[ext_resource type="Texture2D" uid="uid://cenov04gpu713" path="res://Assets/Candle/Candle/06.png" id="33_e5gex"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fibsh"]
-shader = ExtResource("1_w5mfm")
-shader_parameter/scroll_speed = 0.0
+[sub_resource type="Gradient" id="Gradient_6bt48"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xnqup"]
+gradient = SubResource("Gradient_6bt48")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yp7ko"]
 size = Vector2(12, 4177.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1ycp"]
-size = Vector2(658, 384)
+[sub_resource type="SpriteFrames" id="SpriteFrames_tf3ri"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_nw5u1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ak6vh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_iixc4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_do7af")
+}],
+"loop": true,
+"name": &"Medium",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_c2sw3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_tixc2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_8efdd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_6b3eu")
+}],
+"loop": true,
+"name": &"big",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_qu1cm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_qqb6r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_57gb5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_eq32x")
+}],
+"loop": true,
+"name": &"small",
+"speed": 5.0
+}]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8uo2a"]
+texture = ExtResource("26_fn7ct")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:4/0 = 0
+1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:4/0 = 0
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:5/0 = 0
+2:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:5/0 = 0
+1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:4/0 = 0
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:5/0 = 0
+0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:5/0 = 0
+3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:5/0 = 0
+4:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:5/0 = 0
+5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:4/0 = 0
+5:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:4/0 = 0
+4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:4/0 = 0
+3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:3/0 = 0
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:3/0 = 0
+5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:2/0 = 0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+15:6/0 = 0
+15:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+15:7/0 = 0
+15:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+15:8/0 = 0
+15:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+15:9/0 = 0
+15:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+12:6/0 = 0
+12:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+12:7/0 = 0
+12:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+12:8/0 = 0
+12:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+12:9/0 = 0
+12:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+13:7/0 = 0
+13:8/0 = 0
+14:8/0 = 0
+14:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+14:7/0 = 0
+14:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+13:6/0 = 0
+14:6/0 = 0
+14:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+13:9/0 = 0
+14:9/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_24khs"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_8uo2a")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2kwqh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("28_18nmw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_t85q5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_yv3w7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_jdiy8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_btua2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_e5gex")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_y7e1c"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_snig2"]
+gradient = SubResource("Gradient_y7e1c")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_rs0w5")
+gradient_texture = SubResource("GradientTexture1D_xnqup")
 metadata/_edit_horizontal_guides_ = [1081.0]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(0, 2160)
+motion_mirroring = Vector2(0, 480)
 
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
-material = SubResource("ShaderMaterial_fibsh")
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_right = 1080.0
-offset_bottom = 3000.0
+[node name="Sky" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+modulate = Color(0.529412, 0.807843, 0.921569, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 270.0
+offset_bottom = 480.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.60209, 1)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("1_s07e7")
+texture = ExtResource("3_bvxf7")
+
+[node name="SkyColor" type="CanvasModulate" parent="ParallaxBackground/ParallaxLayer/Sky"]
+color = Color(0.621524, 0.621524, 0.621524, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(549, 547)
 scale = Vector2(6, 6)
 limit_left = 0
-limit_right = 648
-limit_bottom = 1080
+limit_right = 270
+limit_bottom = 480
 limit_smoothed = true
 
 [node name="Generators" parent="." instance=ExtResource("4_5s2md")]
@@ -74,32 +288,13 @@ position = Vector2(-1, -260.25)
 shape = SubResource("RectangleShape2D_yp7ko")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Wall"]
-position = Vector2(656, 0)
+position = Vector2(276, -2)
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/StaticBody2D2"]
 position = Vector2(0.5, -849.5)
 shape = SubResource("RectangleShape2D_yp7ko")
-
-[node name="Floor" type="StaticBody2D" parent="."]
-position = Vector2(320, 1273)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-shape = SubResource("RectangleShape2D_h1ycp")
-
-[node name="SlingShot" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_yidns")]
-position = Vector2(328, 899)
-scale = Vector2(2, 2)
-player = NodePath("../Player")
-
-[node name="Player" parent="." node_paths=PackedStringArray("sling_shot", "move_camera") instance=ExtResource("2_vs64h")]
-position = Vector2(427, 1003)
-scale = Vector2(6, 6)
-collision_layer = 3
-collision_mask = 3
-sling_shot = NodePath("../SlingShot")
-move_camera = NodePath("../Camera2D")
 
 [node name="Spring" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_lyq12")]
 player = NodePath("../Player")
@@ -110,13 +305,13 @@ player = NodePath("../Player")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -58.0
+offset_left = -34.0
 offset_top = 71.0
-offset_right = -18.0
-offset_bottom = 194.0
+offset_right = 6.0
+offset_bottom = 151.0
 grow_horizontal = 0
 size_flags_horizontal = 4
-theme_override_constants/separation = 40
+theme_override_constants/separation = 20
 script = ExtResource("10_5hhof")
 
 [node name="Energy" parent="UI/EnergyBar" instance=ExtResource("10_am8hj")]
@@ -130,10 +325,7 @@ layout_mode = 2
 
 [node name="ShopButton" type="Button" parent="UI"]
 unique_name_in_owner = true
-offset_left = 23.0
-offset_top = 23.0
-offset_right = 96.0
-offset_bottom = 102.0
+custom_minimum_size = Vector2(40, 40)
 theme = ExtResource("12_xxuxf")
 
 [node name="Shop" parent="UI" instance=ExtResource("9_rdc63")]
@@ -143,11 +335,88 @@ visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -146.0
-offset_top = 20.0
-offset_right = -54.0
-offset_bottom = 51.0
+offset_left = -122.0
+offset_top = 7.0
+offset_right = -30.0
+offset_bottom = 38.0
 grow_horizontal = 0
 scale = Vector2(1.5, 1.5)
+
+[node name="Height" type="Label" parent="UI"]
+offset_left = 89.0
+offset_top = 1.0
+offset_right = 129.0
+offset_bottom = 24.0
+text = "999"
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+
+[node name="RollBackground" parent="." instance=ExtResource("13_4yb88")]
+position = Vector2(132, 322)
+
+[node name="Sea" type="TextureRect" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 372.0
+offset_right = 272.0
+offset_bottom = 480.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("12_sxayq")
+
+[node name="WaterBig" type="AnimatedSprite2D" parent="."]
+position = Vector2(130, 377)
+sprite_frames = SubResource("SpriteFrames_tf3ri")
+animation = &"big"
+autoplay = "big"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAABABkAAAABAAAAAAACABkAAAACAAAAAAADABkAAAADAAAAAAAEABkAAAAEAAAAAAAFABkAAAABAAAAAAAGABkAAAACAAAAAAAHABkAAAADAAAAAAAIABkAAAAEAAAAAAAJABkAAAABAAAAAAAKABkAAAACAAAAAAALABkAAAADAAAAAAAMABkAAAABAAAAAAANABkAAAACAAAAAAAOABkAAAADAAAAAAAPABkAAAAEAAAAAAAAABkAAAAAAAAAAAAQABkAAAAFAAAAAAAAABoAAAAAAAEAAAAAABsAAAAAAAIAAAAAABwAAAAAAAMAAAAAAB0AAAAAAAQAAAAAAB4AAAAAAAUAAAAQABoAAAAFAAEAAAAQABsAAAAFAAIAAAAQABwAAAAFAAMAAAAQAB0AAAAFAAQAAAAQAB4AAAAFAAUAAAABABoAAAABAAEAAAABABsAAAABAAIAAAABABwAAAABAAMAAAABAB0AAAABAAQAAAABAB4AAAABAAUAAAAPABoAAAAEAAEAAAAPABsAAAADAAIAAAAPABwAAAADAAMAAAAPAB0AAAADAAIAAAAPAB4AAAAEAAUAAAACABoAAAACAAEAAAADABoAAAADAAEAAAAEABoAAAACAAEAAAAFABoAAAADAAEAAAAGABoAAAACAAIAAAAHABoAAAADAAIAAAAIABoAAAACAAEAAAAJABoAAAADAAEAAAAKABoAAAACAAEAAAALABoAAAADAAEAAAAMABoAAAACAAIAAAAMABsAAAACAAIAAAANABoAAAACAAIAAAANABsAAAADAAIAAAAOABoAAAADAAIAAAAOABsAAAACAAIAAAAGABsAAAACAAIAAAAHABsAAAADAAIAAAACABsAAAACAAIAAAACABwAAAACAAMAAAADABsAAAADAAIAAAADABwAAAADAAMAAAAEABsAAAACAAIAAAAEABwAAAACAAMAAAAFABsAAAADAAIAAAAFABwAAAADAAMAAAAGABwAAAACAAMAAAAHABwAAAADAAMAAAAIABsAAAACAAIAAAAIABwAAAACAAMAAAAJABsAAAADAAIAAAAJABwAAAADAAMAAAAKABsAAAACAAIAAAAKABwAAAACAAMAAAALABsAAAADAAIAAAALABwAAAADAAMAAAAMABwAAAACAAMAAAANABwAAAADAAMAAAAOABwAAAACAAMAAAAMAB0AAAACAAIAAAAMAB4AAAACAAMAAAANAB0AAAADAAIAAAANAB4AAAADAAMAAAAOAB0AAAACAAIAAAAOAB4AAAACAAMAAAAKAB0AAAACAAIAAAAKAB4AAAACAAMAAAALAB0AAAADAAIAAAALAB4AAAADAAMAAAAIAB0AAAACAAIAAAAIAB4AAAACAAMAAAAJAB0AAAADAAIAAAAJAB4AAAADAAMAAAAGAB0AAAACAAIAAAAGAB4AAAACAAMAAAAHAB0AAAADAAIAAAAHAB4AAAADAAMAAAAEAB0AAAACAAIAAAAEAB4AAAACAAMAAAAFAB0AAAADAAIAAAAFAB4AAAADAAMAAAACAB0AAAACAAIAAAACAB4AAAACAAMAAAADAB0AAAADAAIAAAADAB4AAAADAAMAAAAAABYAAAAFAAEAAAAAABcAAAAPAAgAAAAAABgAAAAPAAkAAAAQABUAAAAAAAAAAAAQABYAAAAAAAEAAAAQABcAAAAMAAgAAAAQABgAAAAMAAkAAAAAABUAAAAFAAAAAAA=")
+tile_set = SubResource("TileSet_24khs")
+metadata/_edit_lock_ = true
+
+[node name="Box" type="Node2D" parent="."]
+
+[node name="Box" parent="Box" instance=ExtResource("27_0ifs2")]
+position = Vector2(56, 392)
+
+[node name="Candle" type="AnimatedSprite2D" parent="Box/Box"]
+position = Vector2(0, -18)
+sprite_frames = SubResource("SpriteFrames_2kwqh")
+autoplay = "default"
+
+[node name="PointLight2D" type="PointLight2D" parent="Box/Box/Candle" groups=["light"]]
+position = Vector2(0, 1)
+energy = 0.0
+texture = SubResource("GradientTexture2D_snig2")
+texture_scale = 2.0
+
+[node name="Box2" parent="Box" instance=ExtResource("27_0ifs2")]
+position = Vector2(244, 392)
+
+[node name="Candle" type="AnimatedSprite2D" parent="Box/Box2"]
+position = Vector2(0, -18)
+sprite_frames = SubResource("SpriteFrames_2kwqh")
+autoplay = "default"
+
+[node name="PointLight2D" type="PointLight2D" parent="Box/Box2/Candle" groups=["light"]]
+position = Vector2(0, 1)
+energy = 0.0
+texture = SubResource("GradientTexture2D_snig2")
+texture_scale = 2.0
+
+[node name="Player" parent="." node_paths=PackedStringArray("sling_shot", "move_camera") instance=ExtResource("2_vs64h")]
+position = Vector2(199, 380)
+collision_layer = 3
+collision_mask = 3
+sling_shot = NodePath("../SlingShot")
+move_camera = NodePath("../Camera2D")
+
+[node name="SlingShot" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_yidns")]
+position = Vector2(138, 346)
+player = NodePath("../Player")
 
 [connection signal="pressed" from="UI/ShopButton" to="." method="_on_shop_button_pressed"]

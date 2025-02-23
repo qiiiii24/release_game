@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://bawexkb6xe31w"]
+
+[ext_resource type="Texture2D" uid="uid://bumh1yeu7o035" path="res://Assets/Background/Big Clouds.png" id="1_ikdof"]
+[ext_resource type="Shader" path="res://shader/scroll.gdshader" id="1_rqbd4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dpwab"]
+shader = ExtResource("1_rqbd4")
+shader_parameter/direction = Vector2(1, 0)
+shader_parameter/scroll_speed = 0.1
+
+[node name="ParallaxBackground" type="Sprite2D"]
+material = SubResource("ShaderMaterial_dpwab")
+position = Vector2(130, 199)
+texture = ExtResource("1_ikdof")

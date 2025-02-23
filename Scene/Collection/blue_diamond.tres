@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Collection" load_steps=3 format=3 uid="uid://clykohhb4joo3"]
+
+[ext_resource type="Texture2D" uid="uid://d23i8q3kpy6xp" path="res://Assets/Pirate Treasure/Blue Diamond/01.png" id="1_b11b6"]
+[ext_resource type="Script" path="res://custom_resource/collection.gd" id="1_toxf0"]
+
+[resource]
+script = ExtResource("1_toxf0")
+icon = ExtResource("1_b11b6")
+id = "blue diamond"
+amount = 5
+probability = 0.0
+ingame_coin = true
