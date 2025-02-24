@@ -42,9 +42,9 @@ var ability_upgrade_cost = {
 
 ## 局内
 # 拾取范围
-var pick_range : float = 9
+var pick_range : float = 14
 # 速度
-var initial_velocity_factor : float = 40
+var initial_velocity_factor : float = 20
 # 踏板所消耗能量
 var spring_consume_energy : int 
 # 踏板总能量

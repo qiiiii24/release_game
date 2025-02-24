@@ -26,7 +26,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 
 func _random_position() -> void:
-	position.x = randi_range(0,648)
+	position.x = randi_range(0,270)
 
 func set_collection(new_collection : Collection) -> void:
 	if not is_node_ready():

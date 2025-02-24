@@ -7,6 +7,7 @@ const BOUNCE_SPEED := 0.8
 
 @onready var area_2d: Area2D = $Area2D
 @onready var area_shape: CollisionShape2D = $Area2D/AreaShape
+@onready var player_state_machine: PlayerStateMachine = $PlayerStateMachine
 
 
 ## 初速度
@@ -22,7 +23,8 @@ var drag : bool = false
 var camera_can_move : bool = false
 var can_draw_line : bool = false
 var launching : bool = false
-var gravity = get_gravity()
+#var gravity = get_gravity()
+var gravity = Vector2(0,480)
 
 func _ready() -> void:
 	area_2d.input_event.connect(_on_area_2d_input_event)
@@ -32,6 +34,7 @@ func _ready() -> void:
 	
 	initial_y_position = position.y  # 记录初始高度
 	
+	player_state_machine.init()
 
 	
 
@@ -90,10 +93,11 @@ func launch(speed: Vector2) -> void:
 
 ## 点击玩家就会跟着鼠标走
 func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.is_pressed():
-				drag = true
+	player_state_machine.on_gui_input(event)
+	#if event is InputEventMouseButton:
+		#if event.button_index == MOUSE_BUTTON_LEFT:
+			#if event.is_pressed():
+				#drag = true
 
 ## 给予玩家加速度（可以成长）
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -101,6 +105,16 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		camera_can_move = true
 		can_draw_line = false
 		var lanching_speed = Vector2(0, -1000)
+		print("coll")
+		
 		velocity += lanching_speed
 		
 		#launch(lanching_speed)
+
+
+func _on_area_2d_mouse_entered() -> void:
+	player_state_machine.on_mouse_entered()
+
+
+func _on_area_2d_mouse_exited() -> void:
+	player_state_machine.on_mouse_exited()

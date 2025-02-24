@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://0x35mdt8y3fe" path="res://Assets/Pirate Treasure/Red Diamond/01.png" id="2_fkgmn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e1gwg"]
-radius = 4.0
+radius = 7.0
 
 [node name="Coin" type="Node2D"]
 script = ExtResource("1_r655r")

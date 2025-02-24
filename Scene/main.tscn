@@ -410,8 +410,6 @@ texture_scale = 2.0
 
 [node name="Player" parent="." node_paths=PackedStringArray("sling_shot", "move_camera") instance=ExtResource("2_vs64h")]
 position = Vector2(199, 380)
-collision_layer = 3
-collision_mask = 3
 sling_shot = NodePath("../SlingShot")
 move_camera = NodePath("../Camera2D")
 
