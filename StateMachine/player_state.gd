@@ -13,6 +13,7 @@ enum State{
 signal transition_requested(form : PlayerState, to : State)
 
 @export var state : State
+@export var player : Player
 
 # 
 func enter() -> void:

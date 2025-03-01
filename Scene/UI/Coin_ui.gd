@@ -6,10 +6,10 @@ extends Control
 var gold : int = 0
 
 func _ready() -> void:
-	change_gold(null)
-	InventorySystem.State_change.connect(change_gold)
+	change_gold()
+	Event.change_coin_ui.connect(change_gold)
 
-func change_gold(_type) -> void:
+func change_gold() -> void:
 	gold = InventorySystem.ingame_coins
 	label.text = str(gold)
 

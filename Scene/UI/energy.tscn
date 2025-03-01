@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cb3cfnhgl3arj"]
+[gd_scene load_steps=5 format=3 uid="uid://cb3cfnhgl3arj"]
 
 [ext_resource type="Script" path="res://Scene/UI/energy.gd" id="1_81uca"]
 [ext_resource type="Texture2D" uid="uid://mnwbui6crant" path="res://Assets/Sprite sheet for Basic Pack.png" id="2_lhosj"]
@@ -7,13 +7,9 @@
 atlas = ExtResource("2_lhosj")
 region = Rect2(626, 67, 12, 10)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rgsbx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcuol"]
 atlas = ExtResource("2_lhosj")
-region = Rect2(610, 67, 12, 10)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h5ebt"]
-atlas = ExtResource("2_lhosj")
-region = Rect2(594, 67, 12, 10)
+region = Rect2(592, 64, 48, 16)
 
 [node name="Energy" type="Control"]
 layout_mode = 3
@@ -22,18 +18,13 @@ script = ExtResource("1_81uca")
 
 [node name="EnergyEmpty" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_right = 12.0
+offset_bottom = 10.0
+scale = Vector2(1.5, 1.5)
 texture = SubResource("AtlasTexture_86adf")
 
-[node name="EnergyHalf" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 20.0
-offset_bottom = 20.0
-texture = SubResource("AtlasTexture_rgsbx")
-
-[node name="EnergyUI" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 20.0
-offset_bottom = 20.0
-texture = SubResource("AtlasTexture_h5ebt")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9, 8)
+scale = Vector2(1.5, 1.5)
+texture = SubResource("AtlasTexture_fcuol")
+hframes = 3

@@ -1,0 +1,17 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://kerc0hqfwmox"]
+
+[ext_resource type="Texture2D" uid="uid://sscfh4qosj46" path="res://Assets/energy_bar.png" id="1_edhsp"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0alnq"]
+texture = ExtResource("1_edhsp")
+texture_margin_left = 4.0
+texture_margin_right = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3kkql"]
+texture = ExtResource("1_edhsp")
+texture_margin_left = 4.0
+texture_margin_right = 4.0
+
+[resource]
+ProgressBar/styles/background = SubResource("StyleBoxTexture_0alnq")
+ProgressBar/styles/fill = SubResource("StyleBoxTexture_3kkql")

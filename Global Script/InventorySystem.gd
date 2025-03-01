@@ -1,6 +1,5 @@
 extends Node
 
-signal ingame_coins_change
 signal State_change(type)
 signal bought(ability: ABILITY)
 
@@ -15,7 +14,7 @@ enum ABILITY {
 	PICK_RANGE,  # 拾取范围
 	VELOCITY_FACTOR,  # 速度
 	TOTOL_ENERGY,     # 踏板所消耗能量
-	ATTACK,     # 踏板总能量
+	CONSUME_ENERGY,     # 踏板总能量
 	DEFENSE     # 生成物概率
 	# 踏板给玩家的速度
 	# 云朵(减少速度的物体)减少的速度
@@ -27,7 +26,7 @@ var abilities = {
 	ABILITY.PICK_RANGE: 0,
 	ABILITY.VELOCITY_FACTOR: 0,
 	ABILITY.TOTOL_ENERGY: 0,
-	ABILITY.ATTACK: 0,
+	ABILITY.CONSUME_ENERGY: 0,
 	ABILITY.DEFENSE: 0
 }
 
@@ -36,7 +35,7 @@ var ability_upgrade_cost = {
 	ABILITY.PICK_RANGE: func(level): return clamp(10 * (level + 1), 10, 50),  # PICK_RANGE 花费公式
 	ABILITY.VELOCITY_FACTOR: func(level): return 15 * (level + 1), # VELOCITY_FACTOR 花费公式
 	ABILITY.TOTOL_ENERGY: func(level): return 20 * (level + 1),     # TOTOL_ENERGY 花费公式
-	ABILITY.ATTACK: func(level): return 25 * (level + 1),     # ATTACK 花费公式
+	ABILITY.CONSUME_ENERGY: func(level): return 25 * (level + 1),     # ATTACK 花费公式
 	ABILITY.DEFENSE: func(level): return 30 * (level + 1)     # DEFENSE 花费公式
 }
 
@@ -46,9 +45,11 @@ var pick_range : float = 14
 # 速度
 var initial_velocity_factor : float = 20
 # 踏板所消耗能量
-var spring_consume_energy : int 
+var spring_consume_energy : int = 10
 # 踏板总能量
 var spring_total_energy : int = 60
+# 当前能量
+var energy = spring_total_energy
 # 踏板给玩家的速度
 var spring_velocity_factor : float = 10
 # 生成物概率(以什么为标准还没有确定)
@@ -68,7 +69,7 @@ func add_global_coins(amount: int) -> void:
 ## 增加游戏内金币
 func add_ingame_coins(amount: int) -> void:
 	ingame_coins += amount
-	State_change.emit(null)
+	Event.change_coin_ui.emit()
 	
 # 升级能力
 func upgrade_ability(ability: ABILITY) -> void:

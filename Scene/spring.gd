@@ -39,8 +39,16 @@ func draw_spring(pos: Vector2) -> void:
 			line_2d.visible = false
 			collision_shape_2d.disabled = true
 		elif not can_draw and collision_shape_2d.disabled == true:
-			# 设置点二
-			collision_shape_2d.shape.b = pos
-			line_2d.set_point_position(1, pos)
-			line_2d.visible = true
-			collision_shape_2d.disabled = false
+			var can_draw = consume_energy()
+			if can_draw:
+				collision_shape_2d.shape.b = pos
+				line_2d.set_point_position(1, pos)
+				line_2d.visible = true
+				collision_shape_2d.disabled = false
+				Event.change_energy_bar.emit()
+			
+
+func consume_energy() -> bool:
+	InventorySystem.energy-= InventorySystem.spring_consume_energy
+	print(InventorySystem.energy)
+	return InventorySystem.energy >= 0

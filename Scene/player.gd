@@ -25,19 +25,19 @@ var can_draw_line : bool = false
 var launching : bool = false
 #var gravity = get_gravity()
 var gravity = Vector2(0,480)
+# 玩家是否进入区域
+var player_enter : bool
 
 func _ready() -> void:
 	area_2d.input_event.connect(_on_area_2d_input_event)
-	area_2d.body_entered.connect(_on_area_2d_body_entered)
+	#area_2d.body_entered.connect(_on_area_2d_body_entered)
 	sling_shot.drag_mode.connect(launch)
 	InventorySystem.State_change.connect(change_state)
+	Event.fly_ready.connect(_on_ready_fly_ready)
 	
 	initial_y_position = position.y  # 记录初始高度
 	
 	player_state_machine.init()
-
-	
-
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton :
@@ -100,14 +100,14 @@ func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int
 				#drag = true
 
 ## 给予玩家加速度（可以成长）
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body is Spring:
-		camera_can_move = true
-		can_draw_line = false
-		var lanching_speed = Vector2(0, -1000)
-		print("coll")
-		
-		velocity += lanching_speed
+#func _on_area_2d_body_entered(body: Node2D) -> void:
+	#if body is Spring:
+		#camera_can_move = true
+		#can_draw_line = false
+		#var lanching_speed = Vector2(0, -1000)
+		#print("coll")
+		#
+		#velocity += lanching_speed
 		
 		#launch(lanching_speed)
 
@@ -118,3 +118,7 @@ func _on_area_2d_mouse_entered() -> void:
 
 func _on_area_2d_mouse_exited() -> void:
 	player_state_machine.on_mouse_exited()
+
+
+func _on_ready_fly_ready(my_bool: bool) -> void:
+	player_enter = my_bool

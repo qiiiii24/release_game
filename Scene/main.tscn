@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Scene/wall.gd" id="5_4hx0k"]
 [ext_resource type="PackedScene" uid="uid://dupw6g1rmpnny" path="res://Scene/sling_shot.tscn" id="6_yidns"]
 [ext_resource type="PackedScene" uid="uid://d1vctperwnwfy" path="res://Scene/spring.tscn" id="7_lyq12"]
-[ext_resource type="PackedScene" uid="uid://6ed4f2rc5b0t" path="res://Scene/UI/gold.tscn" id="8_sy3md"]
+[ext_resource type="PackedScene" uid="uid://6ed4f2rc5b0t" path="res://Scene/UI/Coin_ui.tscn" id="8_sy3md"]
 [ext_resource type="PackedScene" uid="uid://bv6w7gvtyti2v" path="res://Scene/UI/shop.tscn" id="9_rdc63"]
 [ext_resource type="Script" path="res://Scene/UI/energy_bar.gd" id="10_5hhof"]
 [ext_resource type="PackedScene" uid="uid://cb3cfnhgl3arj" path="res://Scene/UI/energy.tscn" id="10_am8hj"]

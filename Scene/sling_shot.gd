@@ -1,4 +1,5 @@
 extends Node2D
+class_name SlingShot
 
 signal drag_mode
 
@@ -30,32 +31,46 @@ var can_drag : bool = false :
 		line_2d.set_point_position(1,to_local(point_1.global_position))
 		line_2d_2.set_point_position(1,to_local(point_2.global_position))
 		sling_shot_end.position = start_pos
+		
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton :
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.is_released() and can_drag:
+			if event.is_released() and player.player_enter:
 				can_drag = false
 				var launch_speed = _get_launch_velicity()
 				drag_mode.emit(launch_speed)
 				drag_position = start_position
+				player.player_enter = false
+				Event.start_rotate.emit(true)
 				
 
 func _ready() -> void:
 	area_2d.input_event.connect(_on_area_2d_input_event)
-	area_2d.body_entered.connect(_on_area_2d_body_entered, CONNECT_ONE_SHOT)
+	#area_2d.body_entered.connect(_on_area_2d_body_entered, CONNECT_ONE_SHOT)
 	start_position = marker_2d.position
 	start_pos_l1 = line_2d.get_point_position(1)
 	start_pos_l2 = line_2d_2.get_point_position(1)
 	start_pos = sling_shot_end.position
+	Event.fly_ready.connect(update_player_position)
+	
 
 func _process(_delta: float) -> void:
-	if player_enter:
-		player.position = to_global(marker_2d.position) + Vector2(0, -50)
-		
-	if can_drag:
+	if player.player_enter:
+		var target_position := to_global(marker_2d.position) + Vector2(0, -20)
+		#tween.tween_property(player, "position", target_position, 0.75)
+		#await tween.finished
+		#player.position = target_position
+	#if can_drag:
 		_update_sling_band()
-		player.global_position = to_global(drag_position) + Vector2(0, -35)
+		player.global_position = to_global(drag_position) + Vector2(0, -15)
+
+func update_player_position(my_bool) -> void:
+	if player.player_enter:
+		var target_position := to_global(marker_2d.position) + Vector2(0, -20)
+		
+		player.position = target_position
+	
 
 ## 更新橡皮筋效果
 func _update_sling_band() -> void:
@@ -91,6 +106,6 @@ func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int
 				player_enter = false
 
 ## 将物体拖入范围
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body is Player:
-		player_enter = true
+#func _on_area_2d_body_entered(body: Node2D) -> void:
+	#if body is Player:
+		#player_enter = true

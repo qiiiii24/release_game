@@ -1,19 +1,19 @@
 [gd_scene load_steps=3 format=3 uid="uid://6ed4f2rc5b0t"]
 
-[ext_resource type="Script" path="res://Scene/UI/gold.gd" id="1_nig1f"]
-[ext_resource type="Texture2D" uid="uid://csyk1tyuscq7q" path="res://Assets/Pirate Treasure/Silver Coin/01.png" id="2_nyscy"]
+[ext_resource type="Script" path="res://Scene/UI/Coin_ui.gd" id="1_dsbpy"]
+[ext_resource type="Texture2D" uid="uid://csyk1tyuscq7q" path="res://Assets/Pirate Treasure/Silver Coin/01.png" id="2_mdbwo"]
 
 [node name="Gold" type="HBoxContainer"]
 offset_right = 92.0
 offset_bottom = 31.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-script = ExtResource("1_nig1f")
+script = ExtResource("1_dsbpy")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
-texture = ExtResource("2_nyscy")
+texture = ExtResource("2_mdbwo")
 expand_mode = 1
 stretch_mode = 5
 
