@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 InventorySystem="*res://Global Script/InventorySystem.gd"
 Event="*res://Global Script/Event.gd"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [display]
 
@@ -28,6 +29,10 @@ window/size/always_on_top=true
 window/size/window_width_override=540
 window/size/window_height_override=960
 window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
 
 [rendering]
 

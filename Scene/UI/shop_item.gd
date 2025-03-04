@@ -15,7 +15,7 @@ extends Control
 func _ready() -> void:
 	change_ui(null)
 	buy_button.pressed.connect(buy)
-	InventorySystem.State_change.connect(change_ui)
+	Event.ability_change.connect(change_ui)
 	
 
 func buy() -> void:

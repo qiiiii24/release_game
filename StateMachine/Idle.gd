@@ -4,25 +4,30 @@ extends PlayerState
 
 @onready var animation_player: AnimationPlayer = $"../../AnimationPlayer"
 
+var random_time : float
+ 
+
 func enter() -> void:
-	play_idle()
+	randomize()
+	play_random_animation()
 
-func play_idle() -> void:
-	animation_player.play("Idle")
-	var random_amount := randi_range(3,10)
-	await get_tree().create_timer(random_amount).timeout
-	play_run()
+func play_random_animation() -> void:
+	random_time = randi_range(3,5)
+	
+	if randi_range(0,1) == 0:
+		animation_player.play("Idle")
+	else:
+		animation_player.play("Walk")
+	
+	var timer := get_tree().create_timer(random_time)
+	await timer.timeout
+	play_random_animation()
 
-func play_run() -> void:
-	animation_player.play("Walk")
-	var random_amount := randi_range(3,10)
-	await get_tree().create_timer(random_amount).timeout
-	play_idle()
 
 func on_gui_input(event : InputEvent) -> void: #左键点击，切换state
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.is_pressed():
-				transition_requested.emit(self, PlayerState.State.DRAG)
 				animation_player.play("Idle")
+				transition_requested.emit(self, PlayerState.State.DRAG)
 				player.drag = true

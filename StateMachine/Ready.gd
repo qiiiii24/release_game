@@ -4,7 +4,7 @@ extends PlayerState
 
 func enter() -> void:
 	Event.fly_ready.emit(true)
-	player.start.connect(change_to_fly)
+	Event.launch_start.connect(change_to_fly)
 
 func change_to_fly() -> void:
 	transition_requested.emit(self, PlayerState.State.FLY)

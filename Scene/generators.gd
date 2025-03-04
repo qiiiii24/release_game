@@ -3,7 +3,7 @@ extends Node2D
 @export var COIN : PackedScene
 
 @onready var timer: Timer = $Timer
-@onready var player: Player = $"../Player"
+@onready var player: Player = $"../Player/Player"
 
 var generator_position : float :
 	set(value):
@@ -17,7 +17,7 @@ func _physics_process(_delta: float) -> void:
 
 func _ready() -> void:
 	timer.timeout.connect(_generate_coin) #每0.05秒生成一个
-	player.start.connect(start_generate)
+	Event.launch_start.connect(start_generate)
 	
 
 func start_generate() -> void:

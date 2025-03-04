@@ -3,7 +3,8 @@ class_name PlayerState
 
 # 状态： 待机， 行走， 跳跃（飞行）， 拖动
 enum State{
-	BASE, # 包含idle和walk
+	IDLE, # 包含idle和walk
+	RUN,
 	DRAG,
 	FLY,
 	READY

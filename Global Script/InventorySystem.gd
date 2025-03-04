@@ -1,6 +1,6 @@
 extends Node
 
-signal State_change(type)
+
 signal bought(ability: ABILITY)
 
 ## 全局金币（局外成长与解释角色）
@@ -102,7 +102,7 @@ func change_ability_amount(ability: ABILITY) -> void:
 	elif ability == ABILITY.TOTOL_ENERGY:
 		InventorySystem.spring_total_energy += 20
 	
-	InventorySystem.State_change.emit(abilities[ability])
+	Event.ability_change.emit(abilities[ability])
 
 # 获取当前能力等级
 func get_ability_level(ability: ABILITY) -> int:

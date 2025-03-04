@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-signal start
+
 
 const BOUNCE_SPEED := 0.8
 
@@ -32,7 +32,7 @@ func _ready() -> void:
 	area_2d.input_event.connect(_on_area_2d_input_event)
 	#area_2d.body_entered.connect(_on_area_2d_body_entered)
 	sling_shot.drag_mode.connect(launch)
-	InventorySystem.State_change.connect(change_state)
+	Event.ability_change.connect(change_state)
 	Event.fly_ready.connect(_on_ready_fly_ready)
 	
 	initial_y_position = position.y  # 记录初始高度
@@ -71,7 +71,7 @@ func _physics_process(delta: float) -> void:
 ## 相机移动（发射后跟着移动）y方向速度等于0时停止移动，
 func camera_move() -> void:
 	if camera_can_move:
-		move_camera.position.y = position.y
+		#move_camera.position.y = position.y
 		current_height = initial_y_position - position.y  # 计算上升高度
 	
 	if velocity.y > 0:
@@ -88,7 +88,7 @@ func launch(speed: Vector2) -> void:
 	velocity += speed
 	launching = true
 	gravity = get_gravity()
-	start.emit()
+	Event.launch_start.emit()
 	
 
 ## 点击玩家就会跟着鼠标走

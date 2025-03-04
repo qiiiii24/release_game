@@ -6,7 +6,7 @@ var max_amount : int = InventorySystem.spring_total_energy / 20
 
 func _ready() -> void:
 	Event.change_energy_bar.connect(change_energy_ui)
-	InventorySystem.State_change.connect(add_energy)
+	Event.ability_change.connect(add_energy)
 	for child in get_children():
 		child.queue_free()
 	
@@ -19,6 +19,7 @@ func add_energy(_type) -> void:
 		child.queue_free()
 	
 	max_amount = InventorySystem.spring_total_energy / 20
+	InventorySystem.energy = InventorySystem.spring_total_energy
 	var amount : int = max_amount
 	
 	for i in range(amount):

@@ -6,13 +6,16 @@ const HEIGHT : float = 20000
 @onready var shop_button: Button = %ShopButton
 @onready var shop: Control = $UI/Shop
 @onready var sky_color: CanvasModulate = $ParallaxBackground/ParallaxLayer/Sky/SkyColor
-@onready var player: Player = $Player
+@onready var player: Player = $Player/Player
 @onready var height: Label = $UI/Height
 
 # 颜色渐变
 @export var gradient_texture:GradientTexture1D
 
 var current_height : float
+
+func _ready() -> void:
+	Event.launch_start.connect(shop_button_visible)
 
 func _physics_process(delta: float) -> void:
 	current_height = player.current_height
@@ -26,3 +29,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_shop_button_pressed() -> void:
 	shop.visible = true
+
+# 切换商店按钮的可见性（开始游戏后不可见）
+func shop_button_visible() -> void:
+	shop_button.visible = false

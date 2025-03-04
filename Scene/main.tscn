@@ -1,8 +1,9 @@
-[gd_scene load_steps=44 format=4 uid="uid://ro4lxa4s1gnj"]
+[gd_scene load_steps=48 format=4 uid="uid://ro4lxa4s1gnj"]
 
 [ext_resource type="Script" path="res://Scene/main.gd" id="1_rs0w5"]
 [ext_resource type="PackedScene" uid="uid://c2freeyys5ri8" path="res://Scene/player.tscn" id="2_vs64h"]
 [ext_resource type="Texture2D" uid="uid://lda4urw2l0ni" path="res://Assets/Background/white.png" id="3_bvxf7"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_wuktr"]
 [ext_resource type="PackedScene" uid="uid://da2etvm85mka2" path="res://Scene/generators.tscn" id="4_5s2md"]
 [ext_resource type="Script" path="res://Scene/wall.gd" id="5_4hx0k"]
 [ext_resource type="PackedScene" uid="uid://dupw6g1rmpnny" path="res://Scene/sling_shot.tscn" id="6_yidns"]
@@ -34,15 +35,14 @@
 [ext_resource type="Texture2D" uid="uid://c0qwrp1ftyvlv" path="res://Assets/Candle/Candle/04.png" id="31_jdiy8"]
 [ext_resource type="Texture2D" uid="uid://ddl5q4cbxyu00" path="res://Assets/Candle/Candle/05.png" id="32_btua2"]
 [ext_resource type="Texture2D" uid="uid://cenov04gpu713" path="res://Assets/Candle/Candle/06.png" id="33_e5gex"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="34_0v8iw"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="35_8v2ag"]
 
 [sub_resource type="Gradient" id="Gradient_6bt48"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_xnqup"]
 gradient = SubResource("Gradient_6bt48")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yp7ko"]
-size = Vector2(12, 4177.5)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tf3ri"]
 animations = [{
@@ -239,10 +239,18 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yp7ko"]
+size = Vector2(12, 4177.5)
+
+[sub_resource type="Resource" id="Resource_a6eb3"]
+script = ExtResource("35_8v2ag")
+duration = 1.0
+transition = 0
+ease = 2
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_rs0w5")
 gradient_texture = SubResource("GradientTexture1D_xnqup")
-metadata/_edit_horizontal_guides_ = [1081.0]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -261,19 +269,81 @@ grow_vertical = 2
 texture = ExtResource("3_bvxf7")
 
 [node name="SkyColor" type="CanvasModulate" parent="ParallaxBackground/ParallaxLayer/Sky"]
-color = Color(0.621524, 0.621524, 0.621524, 1)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(549, 547)
-scale = Vector2(6, 6)
-limit_left = 0
-limit_right = 270
-limit_bottom = 480
-limit_smoothed = true
+[node name="Object" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="RollBackground" parent="Object" instance=ExtResource("13_4yb88")]
+position = Vector2(132, 322)
+
+[node name="Sea" type="TextureRect" parent="Object"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 370.0
+offset_right = 271.0
+offset_bottom = 478.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("12_sxayq")
+
+[node name="WaterBig" type="AnimatedSprite2D" parent="Object"]
+position = Vector2(130, 377)
+sprite_frames = SubResource("SpriteFrames_tf3ri")
+animation = &"big"
+autoplay = "big"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Object"]
+tile_map_data = PackedByteArray("AAABABkAAAABAAAAAAACABkAAAACAAAAAAADABkAAAADAAAAAAAEABkAAAAEAAAAAAAFABkAAAABAAAAAAAGABkAAAACAAAAAAAHABkAAAADAAAAAAAIABkAAAAEAAAAAAAJABkAAAABAAAAAAAKABkAAAACAAAAAAALABkAAAADAAAAAAAMABkAAAABAAAAAAANABkAAAACAAAAAAAOABkAAAADAAAAAAAPABkAAAAEAAAAAAAAABkAAAAAAAAAAAAQABkAAAAFAAAAAAAAABoAAAAAAAEAAAAAABsAAAAAAAIAAAAAABwAAAAAAAMAAAAAAB0AAAAAAAQAAAAAAB4AAAAAAAUAAAAQABoAAAAFAAEAAAAQABsAAAAFAAIAAAAQABwAAAAFAAMAAAAQAB0AAAAFAAQAAAAQAB4AAAAFAAUAAAABABoAAAABAAEAAAABABsAAAABAAIAAAABABwAAAABAAMAAAABAB0AAAABAAQAAAABAB4AAAABAAUAAAAPABoAAAAEAAEAAAAPABsAAAADAAIAAAAPABwAAAADAAMAAAAPAB0AAAADAAIAAAAPAB4AAAAEAAUAAAACABoAAAACAAEAAAADABoAAAADAAEAAAAEABoAAAACAAEAAAAFABoAAAADAAEAAAAGABoAAAACAAIAAAAHABoAAAADAAIAAAAIABoAAAACAAEAAAAJABoAAAADAAEAAAAKABoAAAACAAEAAAALABoAAAADAAEAAAAMABoAAAACAAIAAAAMABsAAAACAAIAAAANABoAAAACAAIAAAANABsAAAADAAIAAAAOABoAAAADAAIAAAAOABsAAAACAAIAAAAGABsAAAACAAIAAAAHABsAAAADAAIAAAACABsAAAACAAIAAAACABwAAAACAAMAAAADABsAAAADAAIAAAADABwAAAADAAMAAAAEABsAAAACAAIAAAAEABwAAAACAAMAAAAFABsAAAADAAIAAAAFABwAAAADAAMAAAAGABwAAAACAAMAAAAHABwAAAADAAMAAAAIABsAAAACAAIAAAAIABwAAAACAAMAAAAJABsAAAADAAIAAAAJABwAAAADAAMAAAAKABsAAAACAAIAAAAKABwAAAACAAMAAAALABsAAAADAAIAAAALABwAAAADAAMAAAAMABwAAAACAAMAAAANABwAAAADAAMAAAAOABwAAAACAAMAAAAMAB0AAAACAAIAAAAMAB4AAAACAAMAAAANAB0AAAADAAIAAAANAB4AAAADAAMAAAAOAB0AAAACAAIAAAAOAB4AAAACAAMAAAAKAB0AAAACAAIAAAAKAB4AAAACAAMAAAALAB0AAAADAAIAAAALAB4AAAADAAMAAAAIAB0AAAACAAIAAAAIAB4AAAACAAMAAAAJAB0AAAADAAIAAAAJAB4AAAADAAMAAAAGAB0AAAACAAIAAAAGAB4AAAACAAMAAAAHAB0AAAADAAIAAAAHAB4AAAADAAMAAAAEAB0AAAACAAIAAAAEAB4AAAACAAMAAAAFAB0AAAADAAIAAAAFAB4AAAADAAMAAAACAB0AAAACAAIAAAACAB4AAAACAAMAAAADAB0AAAADAAIAAAADAB4AAAADAAMAAAAAABYAAAAFAAEAAAAAABcAAAAPAAgAAAAAABgAAAAPAAkAAAAQABUAAAAAAAAAAAAQABYAAAAAAAEAAAAQABcAAAAMAAgAAAAQABgAAAAMAAkAAAAAABUAAAAFAAAAAAA=")
+tile_set = SubResource("TileSet_24khs")
+metadata/_edit_lock_ = true
+
+[node name="Box" type="Node2D" parent="Object"]
+
+[node name="Box" parent="Object/Box" instance=ExtResource("27_0ifs2")]
+position = Vector2(56, 392)
+
+[node name="Candle" type="AnimatedSprite2D" parent="Object/Box/Box"]
+position = Vector2(0, -18)
+sprite_frames = SubResource("SpriteFrames_2kwqh")
+autoplay = "default"
+
+[node name="PointLight2D" type="PointLight2D" parent="Object/Box/Box/Candle" groups=["light"]]
+position = Vector2(0, 1)
+energy = 0.0
+texture = SubResource("GradientTexture2D_snig2")
+texture_scale = 2.0
+
+[node name="Box2" parent="Object/Box" instance=ExtResource("27_0ifs2")]
+position = Vector2(244, 392)
+
+[node name="Candle" type="AnimatedSprite2D" parent="Object/Box/Box2"]
+position = Vector2(0, -18)
+sprite_frames = SubResource("SpriteFrames_2kwqh")
+autoplay = "default"
+
+[node name="PointLight2D" type="PointLight2D" parent="Object/Box/Box2/Candle" groups=["light"]]
+position = Vector2(0, 1)
+energy = 0.0
+texture = SubResource("GradientTexture2D_snig2")
+texture_scale = 2.0
 
 [node name="Generators" parent="." instance=ExtResource("4_5s2md")]
 position = Vector2(0, 539)
 scale = Vector2(0.999999, 0.999999)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+physics_interpolation_mode = 1
+position = Vector2(136, 380)
+limit_bottom = 480
+limit_smoothed = true
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("3_wuktr")
 
 [node name="Wall" type="Node2D" parent="." groups=["wall"]]
 script = ExtResource("5_4hx0k")
@@ -297,7 +367,7 @@ position = Vector2(0.5, -849.5)
 shape = SubResource("RectangleShape2D_yp7ko")
 
 [node name="Spring" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_lyq12")]
-player = NodePath("../Player")
+player = NodePath("../Player/Player")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -349,72 +419,30 @@ offset_right = 129.0
 offset_bottom = 24.0
 text = "999"
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
+[node name="Player" type="Node" parent="."]
 
-[node name="RollBackground" parent="." instance=ExtResource("13_4yb88")]
-position = Vector2(132, 322)
+[node name="PhantomCamera2D" type="Node2D" parent="Player" node_paths=PackedStringArray("follow_target")]
+top_level = true
+position = Vector2(136, 380)
+script = ExtResource("34_0v8iw")
+priority = 1
+follow_mode = 5
+follow_target = NodePath("../Player")
+tween_resource = SubResource("Resource_a6eb3")
+tween_on_load = false
+dead_zone_height = 0.6
+draw_limits = true
+limit_left = 0
+limit_right = 270
+limit_bottom = 480
 
-[node name="Sea" type="TextureRect" parent="."]
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = 372.0
-offset_right = 272.0
-offset_bottom = 480.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("12_sxayq")
-
-[node name="WaterBig" type="AnimatedSprite2D" parent="."]
-position = Vector2(130, 377)
-sprite_frames = SubResource("SpriteFrames_tf3ri")
-animation = &"big"
-autoplay = "big"
-
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAABABkAAAABAAAAAAACABkAAAACAAAAAAADABkAAAADAAAAAAAEABkAAAAEAAAAAAAFABkAAAABAAAAAAAGABkAAAACAAAAAAAHABkAAAADAAAAAAAIABkAAAAEAAAAAAAJABkAAAABAAAAAAAKABkAAAACAAAAAAALABkAAAADAAAAAAAMABkAAAABAAAAAAANABkAAAACAAAAAAAOABkAAAADAAAAAAAPABkAAAAEAAAAAAAAABkAAAAAAAAAAAAQABkAAAAFAAAAAAAAABoAAAAAAAEAAAAAABsAAAAAAAIAAAAAABwAAAAAAAMAAAAAAB0AAAAAAAQAAAAAAB4AAAAAAAUAAAAQABoAAAAFAAEAAAAQABsAAAAFAAIAAAAQABwAAAAFAAMAAAAQAB0AAAAFAAQAAAAQAB4AAAAFAAUAAAABABoAAAABAAEAAAABABsAAAABAAIAAAABABwAAAABAAMAAAABAB0AAAABAAQAAAABAB4AAAABAAUAAAAPABoAAAAEAAEAAAAPABsAAAADAAIAAAAPABwAAAADAAMAAAAPAB0AAAADAAIAAAAPAB4AAAAEAAUAAAACABoAAAACAAEAAAADABoAAAADAAEAAAAEABoAAAACAAEAAAAFABoAAAADAAEAAAAGABoAAAACAAIAAAAHABoAAAADAAIAAAAIABoAAAACAAEAAAAJABoAAAADAAEAAAAKABoAAAACAAEAAAALABoAAAADAAEAAAAMABoAAAACAAIAAAAMABsAAAACAAIAAAANABoAAAACAAIAAAANABsAAAADAAIAAAAOABoAAAADAAIAAAAOABsAAAACAAIAAAAGABsAAAACAAIAAAAHABsAAAADAAIAAAACABsAAAACAAIAAAACABwAAAACAAMAAAADABsAAAADAAIAAAADABwAAAADAAMAAAAEABsAAAACAAIAAAAEABwAAAACAAMAAAAFABsAAAADAAIAAAAFABwAAAADAAMAAAAGABwAAAACAAMAAAAHABwAAAADAAMAAAAIABsAAAACAAIAAAAIABwAAAACAAMAAAAJABsAAAADAAIAAAAJABwAAAADAAMAAAAKABsAAAACAAIAAAAKABwAAAACAAMAAAALABsAAAADAAIAAAALABwAAAADAAMAAAAMABwAAAACAAMAAAANABwAAAADAAMAAAAOABwAAAACAAMAAAAMAB0AAAACAAIAAAAMAB4AAAACAAMAAAANAB0AAAADAAIAAAANAB4AAAADAAMAAAAOAB0AAAACAAIAAAAOAB4AAAACAAMAAAAKAB0AAAACAAIAAAAKAB4AAAACAAMAAAALAB0AAAADAAIAAAALAB4AAAADAAMAAAAIAB0AAAACAAIAAAAIAB4AAAACAAMAAAAJAB0AAAADAAIAAAAJAB4AAAADAAMAAAAGAB0AAAACAAIAAAAGAB4AAAACAAMAAAAHAB0AAAADAAIAAAAHAB4AAAADAAMAAAAEAB0AAAACAAIAAAAEAB4AAAACAAMAAAAFAB0AAAADAAIAAAAFAB4AAAADAAMAAAACAB0AAAACAAIAAAACAB4AAAACAAMAAAADAB0AAAADAAIAAAADAB4AAAADAAMAAAAAABYAAAAFAAEAAAAAABcAAAAPAAgAAAAAABgAAAAPAAkAAAAQABUAAAAAAAAAAAAQABYAAAAAAAEAAAAQABcAAAAMAAgAAAAQABgAAAAMAAkAAAAAABUAAAAFAAAAAAA=")
-tile_set = SubResource("TileSet_24khs")
-metadata/_edit_lock_ = true
-
-[node name="Box" type="Node2D" parent="."]
-
-[node name="Box" parent="Box" instance=ExtResource("27_0ifs2")]
-position = Vector2(56, 392)
-
-[node name="Candle" type="AnimatedSprite2D" parent="Box/Box"]
-position = Vector2(0, -18)
-sprite_frames = SubResource("SpriteFrames_2kwqh")
-autoplay = "default"
-
-[node name="PointLight2D" type="PointLight2D" parent="Box/Box/Candle" groups=["light"]]
-position = Vector2(0, 1)
-energy = 0.0
-texture = SubResource("GradientTexture2D_snig2")
-texture_scale = 2.0
-
-[node name="Box2" parent="Box" instance=ExtResource("27_0ifs2")]
-position = Vector2(244, 392)
-
-[node name="Candle" type="AnimatedSprite2D" parent="Box/Box2"]
-position = Vector2(0, -18)
-sprite_frames = SubResource("SpriteFrames_2kwqh")
-autoplay = "default"
-
-[node name="PointLight2D" type="PointLight2D" parent="Box/Box2/Candle" groups=["light"]]
-position = Vector2(0, 1)
-energy = 0.0
-texture = SubResource("GradientTexture2D_snig2")
-texture_scale = 2.0
-
-[node name="Player" parent="." node_paths=PackedStringArray("sling_shot", "move_camera") instance=ExtResource("2_vs64h")]
-position = Vector2(199, 380)
-sling_shot = NodePath("../SlingShot")
-move_camera = NodePath("../Camera2D")
+[node name="Player" parent="Player" node_paths=PackedStringArray("sling_shot", "move_camera") instance=ExtResource("2_vs64h")]
+position = Vector2(136, 380)
+sling_shot = NodePath("../../SlingShot")
+move_camera = NodePath("../../Camera2D")
 
 [node name="SlingShot" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_yidns")]
 position = Vector2(138, 346)
-player = NodePath("../Player")
+player = NodePath("../Player/Player")
 
 [connection signal="pressed" from="UI/ShopButton" to="." method="_on_shop_button_pressed"]
