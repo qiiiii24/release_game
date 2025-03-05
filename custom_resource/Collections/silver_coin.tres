@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Collection" load_steps=3 format=3 uid="uid://ga5dajm8gj1e"]
+
+[ext_resource type="Texture2D" uid="uid://csyk1tyuscq7q" path="res://Assets/Pirate Treasure/Silver Coin/01.png" id="1_mwdtf"]
+[ext_resource type="Script" path="res://custom_resource/Collections/collection.gd" id="1_y3jhg"]
+
+[resource]
+script = ExtResource("1_y3jhg")
+icon = ExtResource("1_mwdtf")
+id = ""
+amount = 0
+probability = 0.0
+ingame_coin = true
+type = 0

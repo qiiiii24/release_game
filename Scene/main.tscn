@@ -336,7 +336,7 @@ scale = Vector2(0.999999, 0.999999)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(136, 380)
+position = Vector2(135, 240)
 limit_bottom = 480
 limit_smoothed = true
 
@@ -423,7 +423,7 @@ text = "999"
 
 [node name="PhantomCamera2D" type="Node2D" parent="Player" node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(136, 380)
+position = Vector2(135, 240)
 script = ExtResource("34_0v8iw")
 priority = 1
 follow_mode = 5

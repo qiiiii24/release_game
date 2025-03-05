@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Collection" load_steps=3 format=3 uid="uid://dke6evdh6gpcl"]
+
+[ext_resource type="Script" path="res://custom_resource/Collections/collection.gd" id="1_o1ch1"]
+[ext_resource type="Texture2D" uid="uid://b43im3h06fljb" path="res://Assets/Pirate Treasure/Green Bottle/01.png" id="1_o60u8"]
+
+[resource]
+script = ExtResource("1_o1ch1")
+icon = ExtResource("1_o60u8")
+id = "green potion"
+amount = 10
+probability = 0.0
+ingame_coin = true
+type = 1

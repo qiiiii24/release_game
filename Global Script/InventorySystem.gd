@@ -70,7 +70,13 @@ func add_global_coins(amount: int) -> void:
 func add_ingame_coins(amount: int) -> void:
 	ingame_coins += amount
 	Event.change_coin_ui.emit()
-	
+
+## 
+func add_energy(amount: int) -> void:
+	var new_energy = energy + amount
+	energy = min(new_energy, spring_total_energy)
+	Event.change_energy_bar.emit()
+
 # 升级能力
 func upgrade_ability(ability: ABILITY) -> void:
 	var current_level = abilities[ability]

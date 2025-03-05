@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Collection" load_steps=3 format=3 uid="uid://cq8qhc6j4y24k"]
+
+[ext_resource type="Script" path="res://custom_resource/Collections/collection.gd" id="1_jbblm"]
+[ext_resource type="Texture2D" uid="uid://d174cfltqcmng" path="res://Assets/Pirate Treasure/Green Diamond/01.png" id="1_p2bad"]
+
+[resource]
+script = ExtResource("1_jbblm")
+icon = ExtResource("1_p2bad")
+id = "green diamond"
+amount = 3
+probability = 0.0
+ingame_coin = true
+type = 0

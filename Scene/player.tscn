@@ -187,20 +187,21 @@ player = NodePath("../..")
 
 [node name="Drag" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("player")]
 script = ExtResource("6_u50pm")
-state = 1
+state = 2
 player = NodePath("../..")
 
 [node name="Fly" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("player")]
 script = ExtResource("7_grm51")
-state = 2
+state = 3
 player = NodePath("../..")
 
 [node name="Ready" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("player")]
 script = ExtResource("8_uprl6")
-state = 3
+state = 4
 player = NodePath("../..")
 
 [connection signal="area_entered" from="Area2D" to="PlayerStateMachine/Drag" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Area2D" to="PlayerStateMachine/Fly" method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="PlayerStateMachine/Fly" method="_on_area_2d_body_entered"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

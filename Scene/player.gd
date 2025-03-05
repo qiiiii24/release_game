@@ -85,7 +85,8 @@ func camera_move() -> void:
 ## 发射
 func launch(speed: Vector2) -> void:
 	camera_can_move = true
-	velocity += speed
+	
+	velocity += speed 
 	launching = true
 	gravity = get_gravity()
 	Event.launch_start.emit()

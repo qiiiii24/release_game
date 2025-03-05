@@ -1,5 +1,5 @@
 extends Node2D
-class_name Coin
+class_name Collections
 
 @export var collection : Collection : set = set_collection
 
@@ -8,7 +8,8 @@ class_name Coin
 
 const SPEED : float = 5
 
-var coin_amount : int = 1
+var amount : int 
+var type 
 
 func _ready() -> void:
 	
@@ -21,7 +22,7 @@ func _ready() -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
-		InventorySystem.add_ingame_coins(coin_amount)
+		InventorySystem.add_ingame_coins(amount)
 		queue_free()
 
 
@@ -34,5 +35,6 @@ func set_collection(new_collection : Collection) -> void:
 	
 	collection = new_collection
 	
-	coin_amount = collection.amount
+	amount = collection.amount
 	icon.texture = collection.icon
+	type = collection.type

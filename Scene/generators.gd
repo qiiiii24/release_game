@@ -1,6 +1,7 @@
 extends Node2D
 
-@export var COIN : PackedScene
+@export var COLLECTION : PackedScene
+@export var G_Collections : Array[Collection]
 
 @onready var timer: Timer = $Timer
 @onready var player: Player = $"../Player/Player"
@@ -28,9 +29,12 @@ func start_generate() -> void:
 func _generate_coin() -> void:
 	if not can_generate : return
 	
-	var coin = COIN.instantiate()
-	coin.position = position
-	get_parent().add_child(coin)
+	var collection = G_Collections[0]
+	
+	var collection_scene = COLLECTION.instantiate() as Collections
+	collection_scene.collection= collection
+	collection_scene.position = position
+	get_parent().add_child(collection_scene)
 
 
 	

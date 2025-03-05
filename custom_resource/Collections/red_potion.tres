@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Collection" load_steps=3 format=3 uid="uid://dffhuakucdxhj"]
+
+[ext_resource type="Script" path="res://custom_resource/Collections/collection.gd" id="1_78nb1"]
+[ext_resource type="Texture2D" uid="uid://dixiiurkv7wx4" path="res://Assets/Pirate Treasure/Red Potion/01.png" id="1_ulss8"]
+
+[resource]
+script = ExtResource("1_78nb1")
+icon = ExtResource("1_ulss8")
+id = "red potion"
+amount = 0
+probability = 0.0
+ingame_coin = true
+type = 1

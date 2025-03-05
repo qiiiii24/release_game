@@ -1,6 +1,5 @@
 extends PlayerState
 
-
 func on_gui_input(event : InputEvent) -> void: #左键点击，切换state
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:

@@ -1,6 +1,13 @@
 extends Resource
 class_name Collection
 
+enum TYPE{
+	COIN,
+	POTION
+	## 后续在增加一个局外金币
+	
+}
+
 ## 图片
 @export var icon : Texture
 ## 名字
@@ -9,5 +16,6 @@ class_name Collection
 @export var amount : int
 ## 概率
 @export var probability : float
-## 是否为局内金币（默认为true）
-@export var ingame_coin : bool = true
+
+## 类型
+@export var type : TYPE

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Collection" load_steps=3 format=3 uid="uid://kgxti21pg4np"]
+
+[ext_resource type="Texture2D" uid="uid://0x35mdt8y3fe" path="res://Assets/Pirate Treasure/Red Diamond/01.png" id="1_ddfit"]
+[ext_resource type="Script" path="res://custom_resource/Collections/collection.gd" id="1_ounav"]
+
+[resource]
+script = ExtResource("1_ounav")
+icon = ExtResource("1_ddfit")
+id = "red diamond"
+amount = 5
+probability = 0.0
+ingame_coin = true
+type = 0

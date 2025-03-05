@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Collection" load_steps=3 format=3 uid="uid://db0acec64ilqi"]
+
+[ext_resource type="Texture2D" uid="uid://ceye6ig20s7ls" path="res://Assets/Pirate Treasure/Gold Coin/01.png" id="1_2y10h"]
+[ext_resource type="Script" path="res://custom_resource/Collections/collection.gd" id="1_84om4"]
+
+[resource]
+script = ExtResource("1_84om4")
+icon = ExtResource("1_2y10h")
+id = "gold coin"
+amount = 1
+probability = 0.0
+ingame_coin = true
+type = 0

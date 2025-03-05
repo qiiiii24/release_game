@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Collection" load_steps=3 format=3 uid="uid://rkf8evak1ks1"]
+
+[ext_resource type="Script" path="res://custom_resource/Collections/collection.gd" id="1_7py56"]
+[ext_resource type="Texture2D" uid="uid://djwq2g38imox4" path="res://Assets/Pirate Treasure/Blue Potion/05.png" id="1_u0mfb"]
+
+[resource]
+script = ExtResource("1_7py56")
+icon = ExtResource("1_u0mfb")
+id = "blue potion"
+amount = 0
+probability = 0.0
+ingame_coin = true
+type = 1
