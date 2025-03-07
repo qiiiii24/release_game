@@ -17,3 +17,9 @@ signal ability_change(type)
 
 # 玩家开始发射
 signal launch_start
+
+# 达到一次刷新高度
+signal update_collection
+
+# 赢或输(赢true，输false)
+signal win_or_lose(type: bool)

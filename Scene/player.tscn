@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c2freeyys5ri8"]
+[gd_scene load_steps=17 format=3 uid="uid://c2freeyys5ri8"]
 
 [ext_resource type="Script" path="res://Scene/player.gd" id="1_ni5hs"]
 [ext_resource type="Texture2D" uid="uid://bcd4b1an4xcae" path="res://Assets/Main Characters/Virtual Guy/Idle (32x32).png" id="2_l5yso"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://StateMachine/Run.gd" id="6_w6pmc"]
 [ext_resource type="Script" path="res://StateMachine/Fly.gd" id="7_grm51"]
 [ext_resource type="Script" path="res://StateMachine/Ready.gd" id="8_uprl6"]
+[ext_resource type="Script" path="res://StateMachine/Die.gd" id="10_2wkll"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p6aca"]
 radius = 12.0
@@ -198,6 +199,11 @@ player = NodePath("../..")
 [node name="Ready" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("player")]
 script = ExtResource("8_uprl6")
 state = 4
+player = NodePath("../..")
+
+[node name="Die" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("10_2wkll")
+state = 5
 player = NodePath("../..")
 
 [connection signal="area_entered" from="Area2D" to="PlayerStateMachine/Drag" method="_on_area_2d_area_entered"]

@@ -9,13 +9,17 @@ const HEIGHT : float = 20000
 @onready var player: Player = $Player/Player
 @onready var height: Label = $UI/Height
 
+@onready var lose_ui: Control = $UI/Lose_ui
+@onready var win_ui: Control = $UI/Win_ui
+
 # 颜色渐变
 @export var gradient_texture:GradientTexture1D
 
-var current_height : float
+var current_height : int
 
 func _ready() -> void:
 	Event.launch_start.connect(shop_button_visible)
+	Event.win_or_lose.connect(win_lose_result)
 
 func _physics_process(delta: float) -> void:
 	current_height = player.current_height
@@ -33,3 +37,9 @@ func _on_shop_button_pressed() -> void:
 # 切换商店按钮的可见性（开始游戏后不可见）
 func shop_button_visible() -> void:
 	shop_button.visible = false
+
+func win_lose_result(my_bool: bool) -> void:
+	if my_bool:
+		win_ui.visible = true
+	else:
+		lose_ui.visible = true

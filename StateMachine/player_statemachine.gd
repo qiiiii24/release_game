@@ -44,7 +44,7 @@ func _on_transition_requested(from: PlayerState,to: PlayerState.State) -> void:
 		return
 	
 	var new_state: PlayerState = states[to]
-	print("now state:"+ str(to))
+	#print("now state:"+ str(to))
 	if not new_state:
 		return
 	

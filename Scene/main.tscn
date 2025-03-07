@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://ro4lxa4s1gnj"]
+[gd_scene load_steps=50 format=4 uid="uid://ro4lxa4s1gnj"]
 
 [ext_resource type="Script" path="res://Scene/main.gd" id="1_rs0w5"]
 [ext_resource type="PackedScene" uid="uid://c2freeyys5ri8" path="res://Scene/player.tscn" id="2_vs64h"]
@@ -36,7 +36,9 @@
 [ext_resource type="Texture2D" uid="uid://ddl5q4cbxyu00" path="res://Assets/Candle/Candle/05.png" id="32_btua2"]
 [ext_resource type="Texture2D" uid="uid://cenov04gpu713" path="res://Assets/Candle/Candle/06.png" id="33_e5gex"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="34_0v8iw"]
+[ext_resource type="PackedScene" uid="uid://bawsj20fmxdpg" path="res://Scene/UI/lose_ui.tscn" id="34_va3ln"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="35_8v2ag"]
+[ext_resource type="PackedScene" uid="uid://c3nbgyig2vonp" path="res://Scene/UI/win_ui.tscn" id="35_kjlms"]
 
 [sub_resource type="Gradient" id="Gradient_6bt48"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -336,7 +338,7 @@ scale = Vector2(0.999999, 0.999999)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(135, 240)
+position = Vector2(136, 380)
 limit_bottom = 480
 limit_smoothed = true
 
@@ -398,7 +400,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 40)
 theme = ExtResource("12_xxuxf")
 
-[node name="Shop" parent="UI" instance=ExtResource("9_rdc63")]
+[node name="Shop" parent="UI" groups=["shop"] instance=ExtResource("9_rdc63")]
 visible = false
 
 [node name="Gold" parent="UI" instance=ExtResource("8_sy3md")]
@@ -419,11 +421,17 @@ offset_right = 129.0
 offset_bottom = 24.0
 text = "999"
 
+[node name="Lose_ui" parent="UI" instance=ExtResource("34_va3ln")]
+visible = false
+
+[node name="Win_ui" parent="UI" instance=ExtResource("35_kjlms")]
+visible = false
+
 [node name="Player" type="Node" parent="."]
 
 [node name="PhantomCamera2D" type="Node2D" parent="Player" node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(135, 240)
+position = Vector2(136, 380)
 script = ExtResource("34_0v8iw")
 priority = 1
 follow_mode = 5

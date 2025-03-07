@@ -19,6 +19,7 @@ item_name = "Pick Range"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
+theme_override_font_sizes/font_size = 12
 text = "pick_range"
 horizontal_alignment = 1
 
@@ -35,4 +36,5 @@ texture_progress = SubResource("AtlasTexture_tmdsr")
 [node name="BuyButton" type="Button" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 12
 text = "upgrade"

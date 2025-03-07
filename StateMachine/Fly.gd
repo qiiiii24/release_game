@@ -13,18 +13,30 @@ func enter() -> void:
 
 # 和spring碰撞
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print(body)
+	#print(body)
 	if body is Spring:
 		player.camera_can_move = true
 		player.can_draw_line = false
 		var fall_speed := -player.velocity.y
 		var lanching_speed = Vector2(0, -1000) + Vector2(0, fall_speed)
 		player.velocity += lanching_speed
-	
 
+# 未调用
+func calculate_height() -> void:
+	# true为up false为down
+	var up_down : bool = player.velocity.y < 0
+	if up_down:
+		player.current_height = player.initial_y_position - player.position.y
+		if player.update_collection_height:
+			#print("当前高度：" +  str(player.current_height))
+			Event.update_collection.emit()
 
 func _process(delta: float) -> void:
 	rotate_player(delta)
+	
+	## 判断是否到达结束速度
+	if player.velocity.y > 550:
+		transition_requested.emit(self, PlayerState.State.DIE)
 
 func rotation(my_bool: bool) -> void:
 	start_rotate = my_bool
@@ -38,7 +50,7 @@ func rotate_player(delta: float) -> void:
 		
 		rotation_speed = min(rotation_speed, max_rotation_speed)
 		
-		player.rotation += rotation_speed * delta
+		player.sprite_2d.rotation += rotation_speed * delta
 
 # 捡金币或者药水
 func _on_area_2d_area_entered(area: Area2D) -> void:

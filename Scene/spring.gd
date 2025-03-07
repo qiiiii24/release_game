@@ -14,6 +14,9 @@ var can_draw: bool = false
 var start_position: Vector2
 var end_position: Vector2 
 
+func _ready() -> void:
+	Event.win_or_lose.connect(close_collision)
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
@@ -45,10 +48,14 @@ func draw_spring(pos: Vector2) -> void:
 				line_2d.set_point_position(1, pos)
 				line_2d.visible = true
 				collision_shape_2d.disabled = false
+				
 				Event.change_energy_bar.emit()
 			
 
+func close_collision(my_bool) -> void:
+	collision_shape_2d.disabled = true
+
 func consume_energy() -> bool:
 	InventorySystem.energy-= InventorySystem.spring_consume_energy
-	print(InventorySystem.energy)
+	#print(InventorySystem.energy)
 	return InventorySystem.energy >= 0

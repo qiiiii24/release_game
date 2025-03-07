@@ -7,7 +7,8 @@ enum State{
 	RUN,
 	DRAG,
 	FLY,
-	READY
+	READY,
+	DIE
 }
 
 #

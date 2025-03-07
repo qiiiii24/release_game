@@ -34,15 +34,15 @@ func change_energy_ui() -> void:
 	var full_energy = amount / 2 # 当前有多少颗满的能量
 	
 	for i in range(full_energy):
-		print("full_energy = %s" % full_energy)
+		#print("full_energy = %s" % full_energy)
 		energys[i].update(2)
 	
 	if full_energy == energys.size(): 
 		return
 	
 	var remainder = amount % 2 #是否剩下半颗能量，如果剩下应该为1，不剩下则为0
-	print("amount = %s" % amount)
-	print("remainder =  %s" % remainder)
+	#print("amount = %s" % amount)
+	#print("remainder =  %s" % remainder)
 	energys[full_energy].update(remainder)
 	
 	for i in range(full_energy + 1, energys.size()):

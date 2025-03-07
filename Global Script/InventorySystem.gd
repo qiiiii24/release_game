@@ -15,7 +15,7 @@ enum ABILITY {
 	VELOCITY_FACTOR,  # 速度
 	TOTOL_ENERGY,     # 踏板所消耗能量
 	CONSUME_ENERGY,     # 踏板总能量
-	DEFENSE     # 生成物概率
+	GENERATE_AMOUNT     # 生成物数量
 	# 踏板给玩家的速度
 	# 云朵(减少速度的物体)减少的速度
 	# 加速物品的效率
@@ -27,7 +27,7 @@ var abilities = {
 	ABILITY.VELOCITY_FACTOR: 0,
 	ABILITY.TOTOL_ENERGY: 0,
 	ABILITY.CONSUME_ENERGY: 0,
-	ABILITY.DEFENSE: 0
+	ABILITY.GENERATE_AMOUNT: 0
 }
 
 # 每种能力的升级花费公式（示例：基础花费 * (当前等级 + 1)）
@@ -36,7 +36,7 @@ var ability_upgrade_cost = {
 	ABILITY.VELOCITY_FACTOR: func(level): return 15 * (level + 1), # VELOCITY_FACTOR 花费公式
 	ABILITY.TOTOL_ENERGY: func(level): return 20 * (level + 1),     # TOTOL_ENERGY 花费公式
 	ABILITY.CONSUME_ENERGY: func(level): return 25 * (level + 1),     # ATTACK 花费公式
-	ABILITY.DEFENSE: func(level): return 30 * (level + 1)     # DEFENSE 花费公式
+	ABILITY.GENERATE_AMOUNT: func(level): return 30 * (level + 1)     # DEFENSE 花费公式
 }
 
 ## 局内
@@ -53,7 +53,7 @@ var energy = spring_total_energy
 # 踏板给玩家的速度
 var spring_velocity_factor : float = 10
 # 生成物概率(以什么为标准还没有确定)
-var generate_rate
+var generate_amount : int = 10
 # 云朵(减少速度的物体)减少的速度
 var cloud_reduce_factor : float = 0.1
 # 加速物品的效率
