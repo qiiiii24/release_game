@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://bgin1a64tqo8i"]
+
+[ext_resource type="Texture2D" uid="uid://bx48fkemh2qrk" path="res://Assets/chest/Fantasy RPG (Toony) 32x32.png" id="1_0idmp"]
+
+[resource]
+atlas = ExtResource("1_0idmp")
+region = Rect2(192, 128, 32, 128)

@@ -17,6 +17,7 @@ func _ready() -> void:
 	buy_button.pressed.connect(buy)
 	Event.ability_change.connect(change_ui)
 	
+	
 
 func buy() -> void:
 	InventorySystem.bought.emit(ability)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://c6jl8hypa0j1m"]
+[gd_scene load_steps=38 format=4 uid="uid://ce730ag2j36a1"]
 
 [ext_resource type="Script" path="res://Scene/UI/main_menu.gd" id="1_6jtcl"]
 [ext_resource type="Theme" uid="uid://bshvstrorndl5" path="res://Theme/Main_menu.tres" id="1_ph18s"]
@@ -243,6 +243,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_ph18s")
 script = ExtResource("1_6jtcl")
+path = "res://Scene/main.tscn"
 
 [node name="Sky" type="TextureRect" parent="."]
 modulate = Color(0.529412, 0.807843, 0.921569, 1)

@@ -10,3 +10,4 @@ func open_shop() -> void:
 	var shop = get_tree().get_first_node_in_group("shop")
 	shop.visible = true
 	visible = false
+	

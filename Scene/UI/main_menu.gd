@@ -1,6 +1,6 @@
 extends Control
 
-const MAIN := preload("res://Scene/main.tscn")
+@export_file("*.tscn") var path : String
 
 @onready var button: Button = $Button
 
@@ -15,4 +15,5 @@ func _ready() -> void:
 			#child.energy = 0.5
 
 func start_geme() -> void:
-	get_tree().change_scene_to_packed(MAIN)
+	print("pressed")
+	get_tree().change_scene_to_file(path)

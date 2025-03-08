@@ -34,6 +34,10 @@ window/stretch/mode="canvas_items"
 
 enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
 
+[phantom_camera]
+
+tips/show_jitter_tips=false
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
